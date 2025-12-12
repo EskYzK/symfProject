@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur GameO'Center{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenue sur GameO'Center !</h1>
+        <p class="lead">Nous vous proposons une large gamme de jeux vidéo selon vos goûts et vos envies !</p>
+        <hr class="my-4">
+        <img src="{{ asset('images/PHP.png') }}" alt="Description de l'image" class="home-banner">
+        <a class="btn btn-primary btn-lg" href="{{ path('product_index') }}" role="button">Voir les produits</a>
+    </div>
+{% endblock %}

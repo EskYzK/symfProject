@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande Confirmée{% endblock %}
+
+{% block body %}
+    <h1>Merci pour votre commande !</h1>
+
+    <p>Votre commande numéro {{ order.id }} a été passée avec succès.</p>
+
+    <h2>Détails de la commande</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.orderItems %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total de la commande :</strong> {{ order.total }} €</p>
+
+    <a href="{{ path('product_index') }}" class="btn btn-primary">Continuer mes achats</a>
+{% endblock %}

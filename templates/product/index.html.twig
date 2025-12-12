@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous nos produits{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Tous nos produits</h1>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {# --- DÉBUT MODIFICATION : AFFICHAGE IMAGE --- #}
+                    {% set mainImage = product.images|first %}
+                    
+                    {% if mainImage %}
+                        <img src="{{ mainImage.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        {# Image par défaut si le produit n'en a pas #}
+                        <img src="https://via.placeholder.com/640x480.png?Text=Pas+d'image" class="card-img-top" alt="Image par défaut" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    {# --- FIN MODIFICATION --- #}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description|slice(0, 100) }}...</p>
+                        
+                        {# Affichage du statut (stock) #}
+                        <p class="card-text">
+                            {% if product.stock > 0 %}
+                                <span class="badge bg-success">En stock ({{ product.stock }})</span>
+                            {% else %}
+                                <span class="badge bg-danger">Rupture</span>
+                            {% endif %}
+                        </p>
+
+                        <h4 class="card-text text-primary">{{ product.price }} €</h4>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="{{ path('product_show', {id: product.id}) }}" class="btn btn-outline-primary">Voir le détail</a>
+                        <a href="{{ path('cart_add', {id: product.id}) }}" class="btn btn-success">
+                            <i class="fas fa-cart-plus"></i> Ajouter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info">Aucun produit trouvé pour le moment.</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
