@@ -30,7 +30,7 @@ class OrderController extends AbstractController
         $order->setUser($this->getUser());
         $order->setReference(uniqid());
         $order->setCreatedAt(new \DateTimeImmutable());
-        $order->setStatus('payée');
+        $order->setStatus('Payée');
         $total = 0;
 
         foreach ($panier as $id => $quantity) {
