@@ -13,6 +13,11 @@ cart:
     pay: "Payer"
     continue: "Continuer mes achats"
 
+mainpage:
+    title: "Bienvenue sur GameO'Center !"
+    desc: "Nous vous proposons une large gamme de jeux vidéo selon vos goûts et vos envies !"
+    button: "Voir les produits"
+
 product:
     price: "Prix"
     no_stock: "Rupture de stock"

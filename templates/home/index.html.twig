@@ -4,10 +4,10 @@
 
 {% block body %}
     <div class="jumbotron">
-        <h1 class="display-4">Bienvenue sur GameO'Center !</h1>
-        <p class="lead">Nous vous proposons une large gamme de jeux vidéo selon vos goûts et vos envies !</p>
+        <h1 class="display-4">{{ 'mainpage.title'|trans }}</h1>
+        <p class="lead">{{ 'mainpage.desc'|trans }}</p>
         <hr class="my-4">
         <img src="{{ asset('images/PHP.png') }}" alt="Description de l'image" class="home-banner">
-        <a class="btn btn-primary btn-lg" href="{{ path('product_index') }}" role="button">Voir les produits</a>
+        <a class="btn btn-primary btn-lg" href="{{ path('product_index') }}" role="button">{{ 'mainpage.button'|trans }}</a>
     </div>
 {% endblock %}

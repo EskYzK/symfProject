@@ -13,6 +13,11 @@ cart:
     pay: "支払う"
     continue: "買い物を続ける"
 
+mainpage:
+    title: "GameO'Centerへようこそ！"
+    desc: "お客様の好みやご要望に合わせて、幅広いビデオゲームをご提供いたします。"
+    button: "製品を見る"
+
 product:
     price: "価格"
     no_stock: "在庫切れ"
