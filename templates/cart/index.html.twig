@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'cart.title'|trans }}{% endblock %}
+{% block title %}{{ 'cartpage.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="my-4">{{ 'cart.title'|trans }}</h1>
+    <h1 class="my-4">{{ 'cartpage.title'|trans }}</h1>
 
     {% if items|length > 0 %}
         <div class="table-responsive">
             <table class="table table-striped align-middle">
                 <thead>
                     <tr>
-                        <th>{{ 'product.name'|trans }}</th>
-                        <th>{{ 'product.price'|trans }}</th>
-                        <th style="width: 20%;">{{ 'product.stock'|trans }}</th>
-                        <th>{{ 'product.total'|trans }}</th>
-                        <th>{{ 'product.actions'|trans }}</th>
+                        <th>{{ 'cartpage.name'|trans }}</th>
+                        <th>{{ 'cartpage.price'|trans }}</th>
+                        <th style="width: 20%;">{{ 'cartpage.stock'|trans }}</th>
+                        <th>{{ 'cartpage.total'|trans }}</th>
+                        <th>{{ 'cartpage.actions'|trans }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="text-end"><strong>{{ 'product.total'|trans }}</strong></td>
+                        <td colspan="3" class="text-end"><strong>{{ 'cartpage.total'|trans }}</strong></td>
                         <td colspan="2"><strong class="fs-5 text-primary">{{ total }} €</strong></td>
                     </tr>
                 </tfoot>
@@ -54,19 +54,19 @@
         
         <div class="d-flex justify-content-end align-items-center mt-3">
             <a href="{{ path('product_index') }}" class="btn btn-secondary me-3">
-                <i class="fas fa-arrow-left"></i> {{ 'cart.continue'|trans }}
+                <i class="fas fa-arrow-left"></i> {{ 'cartpage.continue'|trans }}
             </a>
             
             <a href="{{ path('order_add') }}" class="btn btn-success btn-lg">
-                <i class="fas fa-check"></i> {{ 'cart.pay'|trans }} {{ total }} €
+                <i class="fas fa-check"></i> {{ 'cartpage.pay'|trans }} {{ total }} €
             </a>
         </div>
 
     {% else %}
         <div class="alert alert-warning text-center py-5">
-            <h4 class="alert-heading">{{ 'cart.empty'|trans }}</h4>
+            <h4 class="alert-heading">{{ 'cartpage.empty'|trans }}</h4>
             <p class="mb-0">Allez vite remplir votre panier ! 🎮</p>
-            <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cart.continue'|trans }}</a>
+            <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cartpage.continue'|trans }}</a>
         </div>
     {% endif %}
 
