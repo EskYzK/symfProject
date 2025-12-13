@@ -16,3 +16,7 @@ cart:
 product:
     price: "価格"
     no_stock: "在庫切れ"
+    name: "名前"
+    stock: "量"
+    total: "合計"
+    actions: "アクション"

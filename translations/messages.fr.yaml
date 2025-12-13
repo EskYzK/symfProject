@@ -16,3 +16,7 @@ cart:
 product:
     price: "Prix"
     no_stock: "Rupture de stock"
+    name: "Nom"
+    stock: "Quantité"
+    total : "Total"
+    actions: "Actions"

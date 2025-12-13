@@ -1,57 +1,101 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Panier{% endblock %}
+{% block title %}{{ 'cart.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="my-4">Votre Panier</h1>
+    <h1 class="my-4">{{ 'cart.title'|trans }}</h1>
 
     {% if items|length > 0 %}
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Total</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
                     <tr>
-                        <td>{{ item.product.name }}</td>
-                        <td>{{ item.product.price }} €</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.product.price * item.quantity }} €</td>
-                        <td>
-                            <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
-                                Supprimer
-                            </a>
-                        </td>
+                        <th>{{ 'product.name'|trans }}</th>
+                        <th>{{ 'product.price'|trans }}</th>
+                        <th style="width: 20%;">{{ 'product.stock'|trans }}</th>
+                        <th>{{ 'product.total'|trans }}</th>
+                        <th>{{ 'product.actions'|trans }}</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-end"><strong>Total :</strong></td>
-                    <td colspan="2"><strong>{{ total }} €</strong></td>
-                </tr>
-            </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    {% if item.product.images|length > 0 %}
+                                        <img src="{{ asset(item.product.images[0].url) }}" alt="" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;" class="rounded">
+                                    {% endif %}
+                                    {{ item.product.name }}
+                                </div>
+                            </td>
+                            <td>{{ item.product.price }} €</td>
+                            <td>
+                                {# --- FORMULAIRE SANS BOUTON --- #}
+                                <form action="{{ path('cart_update', {id: item.product.id}) }}" method="post">
+                                    {# J'ai ajouté la classe 'js-qty' et mis min="0" #}
+                                    <input type="number" name="qty" value="{{ item.quantity }}" min="0" class="form-control form-control-sm text-center js-qty" style="width: 70px;">
+                                </form>
+                            </td>
+                            <td class="fw-bold">{{ item.product.price * item.quantity }} €</td>
+                            <td>
+                                <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end"><strong>Total :</strong></td>
+                        <td colspan="2"><strong class="fs-5 text-primary">{{ total }} €</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
         
         <div class="d-flex justify-content-end align-items-center mt-3">
             <a href="{{ path('product_index') }}" class="btn btn-secondary me-3">
-                <i class="fas fa-arrow-left"></i> Continuer mes achats
+                <i class="fas fa-arrow-left"></i> {{ 'cart.continue'|trans }}
             </a>
             
-            {# Le bouton Payer #}
             <a href="{{ path('order_add') }}" class="btn btn-success btn-lg">
-                <i class="fas fa-check"></i> Payer {{ total }} €
+                <i class="fas fa-check"></i> {{ 'cart.pay'|trans }} {{ total }} €
             </a>
         </div>
-        
+
     {% else %}
-        <div class="alert alert-warning">Votre panier est vide.</div>
-        <a href="{{ path('product_index') }}" class="btn btn-primary">Voir les produits</a>
+        <div class="alert alert-warning text-center py-5">
+            <h4 class="alert-heading">{{ 'cart.empty'|trans }}</h4>
+            <p class="mb-0">Allez vite remplir votre panier ! 🎮</p>
+            <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cart.continue'|trans }}</a>
+        </div>
     {% endif %}
+
+    <script>
+        // On retire le "DOMContentLoaded" car le script est déjà en bas de page
+        // et les éléments existent déjà.
+
+        const inputs = document.querySelectorAll('.js-qty');
+
+        inputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const form = this.closest('form');
+                
+                const value = parseInt(this.value);
+
+                if (value <= 0) {
+                    const confirmation = confirm("Voulez-vous vraiment retirer cet article du panier ?");
+                    
+                    if (confirmation) {
+                        form.submit();
+                    } else {
+                        this.value = 1;
+                    }
+                } else {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 {% endblock %}

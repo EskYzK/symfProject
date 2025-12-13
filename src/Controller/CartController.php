@@ -3,15 +3,12 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -45,15 +42,7 @@ class CartController extends AbstractController
     public function add($id, SessionInterface $session, Request $request): Response
     {
         $panier = $session->get('panier', []);
-
-        // On récupère la quantité du formulaire (1 par défaut si vide)
-        // 'qty' sera le nom de notre input dans le HTML
         $quantity = $request->request->getInt('qty', 1);
-
-        // Sécurité : on s'assure qu'on ajoute au moins 1 produit
-        if ($quantity < 1) {
-            $quantity = 1;
-        }
 
         if (!empty($panier[$id])) {
             $panier[$id] += $quantity;
@@ -62,11 +51,36 @@ class CartController extends AbstractController
         }
 
         $session->set('panier', $panier);
+        
+        // Si on vient du panier, on reste sur le panier, sinon on retourne aux produits
+        // (On détecte d'où on vient grâce à la page précédente)
+        $referer = $request->headers->get('referer');
+        if ($referer && str_contains($referer, '/cart')) {
+            return $this->redirectToRoute('cart_index');
+        }
 
-        // Petit message flash dynamique
-        $this->addFlash('success', 'Produit ajouté au panier (x' . $quantity . ') !');
-
+        $this->addFlash('success', 'Produit ajouté au panier !');
         return $this->redirectToRoute('product_index');
+    }
+
+    #[Route('/update/{id}', name: 'cart_update')]
+    #[IsGranted('ROLE_USER')]
+    public function update($id, SessionInterface $session, Request $request): Response
+    {
+        $panier = $session->get('panier', []);
+        $quantity = $request->request->getInt('qty');
+
+        if ($quantity > 0) {
+            // On remplace la quantité (on n'additionne pas)
+            $panier[$id] = $quantity;
+        } else {
+            // Si l'utilisateur met 0 ou moins, on supprime
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+
+        return $this->redirectToRoute('cart_index');
     }
 
     #[Route('/remove/{id}', name: 'cart_remove')]
