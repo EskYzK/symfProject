@@ -1,4 +1,5 @@
 menu:
+    title: "GameO'Centerへようこそ"
     home: "ホーム"
     products: "商品"
     cart: "カート"
@@ -19,9 +20,15 @@ mainpage:
     button: "製品を見る"
 
 product:
+    description:
+            The Last of Us Part II: "終末後の世界を舞台にしたアクションアドベンチャーゲーム。"
+            Cyberpunk 2077: "巨大都市ナイトシティを舞台にしたオープンワールドアクションRPG。"
+            Red Dead Redemption 2: "西部開拓時代を舞台にしたオープンワールドアクションアドベンチャーゲーム。"
+            "The Witcher 3: Wild Hunt" : "豊かなストーリーと印象的なキャラクターを備えたオープンワールド RPG。"
     price: "価格"
     no_stock: "在庫切れ"
     name: "名前"
     stock: "量"
     total: "合計"
     actions: "アクション"
+    title: "私たちのすべてのゲーム"

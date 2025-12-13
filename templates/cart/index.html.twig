@@ -30,9 +30,7 @@
                             </td>
                             <td>{{ item.product.price }} €</td>
                             <td>
-                                {# --- FORMULAIRE SANS BOUTON --- #}
                                 <form action="{{ path('cart_update', {id: item.product.id}) }}" method="post">
-                                    {# J'ai ajouté la classe 'js-qty' et mis min="0" #}
                                     <input type="number" name="qty" value="{{ item.quantity }}" min="0" class="form-control form-control-sm text-center js-qty" style="width: 70px;">
                                 </form>
                             </td>
@@ -47,7 +45,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="text-end"><strong>Total :</strong></td>
+                        <td colspan="3" class="text-end"><strong>{{ 'product.total'|trans }}</strong></td>
                         <td colspan="2"><strong class="fs-5 text-primary">{{ total }} €</strong></td>
                     </tr>
                 </tfoot>

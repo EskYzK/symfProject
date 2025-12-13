@@ -1,4 +1,5 @@
 menu:
+    title: "Bienvenue sur GameO'Center"
     home: "Accueil"
     products: "Produits"
     cart: "Panier"
@@ -19,9 +20,15 @@ mainpage:
     button: "Voir les produits"
 
 product:
+    description:
+        The Last of Us Part II: "Un jeu d'action-aventure se déroulant dans un monde post-apocalyptique."
+        Cyberpunk 2077: "Un RPG d'action en monde ouvert se déroulant dans la mégalopole de Night City."
+        Red Dead Redemption 2: "Un jeu d'action-aventure en monde ouvert se déroulant à l'époque du Far West."
+        "The Witcher 3: Wild Hunt": "Un RPG en monde ouvert avec une histoire riche et des personnages mémorables."
     price: "Prix"
     no_stock: "Rupture de stock"
     name: "Nom"
     stock: "Quantité"
     total : "Total"
     actions: "Actions"
+    title: "Tous nos jeux"
