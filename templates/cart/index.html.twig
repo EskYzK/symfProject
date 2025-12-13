@@ -65,7 +65,7 @@
     {% else %}
         <div class="alert alert-warning text-center py-5">
             <h4 class="alert-heading">{{ 'cartpage.empty'|trans }}</h4>
-            <p class="mb-0">Allez vite remplir votre panier ! 🎮</p>
+            <p class="mb-0">{{ 'cartpage.message'|trans }} 🎮</p>
             <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cartpage.continue'|trans }}</a>
         </div>
     {% endif %}

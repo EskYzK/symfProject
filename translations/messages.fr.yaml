@@ -29,6 +29,7 @@ cartpage:
     name: "Nom"
     stock: "Quantité"
     total : "Total"
+    message: "Allez vite remplir votre panier !"
 
 menu:
     

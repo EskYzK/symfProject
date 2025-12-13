@@ -30,6 +30,7 @@ cartpage:
     name: "名前"
     stock: "量"
     total: "合計"
+    message: "早くバスケットをいっぱいにしてください!"
 
 
 menu:
