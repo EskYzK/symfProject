@@ -71,10 +71,8 @@ class CartController extends AbstractController
         $quantity = $request->request->getInt('qty');
 
         if ($quantity > 0) {
-            // On remplace la quantité (on n'additionne pas)
             $panier[$id] = $quantity;
         } else {
-            // Si l'utilisateur met 0 ou moins, on supprime
             unset($panier[$id]);
         }
 
