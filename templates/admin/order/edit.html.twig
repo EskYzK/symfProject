@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Commande #{{ order.reference }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Commande <small class="text-muted">#{{ order.reference }}</small></h1>
+    <hr>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">Changer le statut</div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.status) }}
+                        <button class="btn btn-success mt-3 w-100">Sauvegarder</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <h4>Détails</h4>
+            <ul class="list-group">
+                {% for item in order.orderItems %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ item.product.name }}
+                        <span class="badge bg-secondary rounded-pill">x{{ item.quantity }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <a href="{{ path('admin_order_index') }}" class="btn btn-outline-secondary mt-4">Retour à la liste</a>
+</div>
+{% endblock %}

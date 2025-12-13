@@ -3,97 +3,87 @@
 {% block title %}{{ 'cartpage.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="my-4">{{ 'cartpage.title'|trans }}</h1>
-
-    {% if items|length > 0 %}
-        <div class="table-responsive">
-            <table class="table table-striped align-middle">
-                <thead>
-                    <tr>
-                        <th>{{ 'cartpage.name'|trans }}</th>
-                        <th>{{ 'cartpage.price'|trans }}</th>
-                        <th style="width: 20%;">{{ 'cartpage.stock'|trans }}</th>
-                        <th>{{ 'cartpage.total'|trans }}</th>
-                        <th>{{ 'cartpage.actions'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    {% if item.product.images|length > 0 %}
-                                        <img src="{{ asset(item.product.images[0].url) }}" alt="" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;" class="rounded">
-                                    {% endif %}
-                                    {{ item.product.name }}
-                                </div>
-                            </td>
-                            <td>{{ item.product.price }} €</td>
-                            <td>
-                                <form action="{{ path('cart_update', {id: item.product.id}) }}" method="post">
-                                    <input type="number" name="qty" value="{{ item.quantity }}" min="0" class="form-control form-control-sm text-center js-qty" style="width: 70px;">
-                                </form>
-                            </td>
-                            <td class="fw-bold">{{ item.product.price * item.quantity }} €</td>
-                            <td>
-                                <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-outline-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3" class="text-end"><strong>{{ 'cartpage.total'|trans }}</strong></td>
-                        <td colspan="2"><strong class="fs-5 text-primary">{{ total }} €</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+    {# --- ON CONNECTE LE CONTROLLER ICI --- #}
+    <div data-controller="cart"> 
         
-        <div class="d-flex justify-content-end align-items-center mt-3">
-            <a href="{{ path('product_index') }}" class="btn btn-secondary me-3">
-                <i class="fas fa-arrow-left"></i> {{ 'cartpage.continue'|trans }}
-            </a>
+        <h1 class="my-4">{{ 'cartpage.title'|trans }}</h1>
+
+        {% if items|length > 0 %}
+            {# --- CIBLE : LE CONTENU DU TABLEAU --- #}
+            <div class="table-responsive" data-cart-target="content">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>{{ 'cartpage.name'|trans }}</th>
+                            <th>{{ 'cartpage.price'|trans }}</th>
+                            <th style="width: 20%;">{{ 'cartpage.stock'|trans }}</th>
+                            <th>{{ 'cartpage.total'|trans }}</th>
+                            <th>{{ 'cartpage.actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        {% if item.product.images|length > 0 %}
+                                            <img src="{{ asset(item.product.images[0].url) }}" alt="" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;" class="rounded">
+                                        {% endif %}
+                                        {{ item.product.name }}
+                                    </div>
+                                </td>
+                                <td>{{ item.product.price }} €</td>
+                                <td>
+                                    <form action="{{ path('cart_update', {id: item.product.id}) }}" method="post">
+                                        {# --- ACTION STIMULUS SUR LE CHANGEMENT --- #}
+                                        <input type="number" 
+                                               name="qty" 
+                                               value="{{ item.quantity }}" 
+                                               min="0" 
+                                               class="form-control form-control-sm text-center" 
+                                               style="width: 70px;"
+                                               data-action="change->cart#update"
+                                        >
+                                    </form>
+                                </td>
+                                <td class="fw-bold">{{ item.product.price * item.quantity }} €</td>
+                                <td>
+                                    <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end"><strong>{{ 'cartpage.total'|trans }}</strong></td>
+                            {# --- CIBLE : LE TOTAL --- #}
+                            <td colspan="2"><strong class="fs-5 text-primary" data-cart-target="total">{{ total }} €</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
             
-            <a href="{{ path('order_add') }}" class="btn btn-success btn-lg">
-                <i class="fas fa-check"></i> {{ 'cartpage.pay'|trans }} {{ total }} €
-            </a>
-        </div>
-
-    {% else %}
-        <div class="alert alert-warning text-center py-5">
-            <h4 class="alert-heading">{{ 'cartpage.empty'|trans }}</h4>
-            <p class="mb-0">{{ 'cartpage.message'|trans }} 🎮</p>
-            <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cartpage.continue'|trans }}</a>
-        </div>
-    {% endif %}
-
-    <script>
-        // On retire le "DOMContentLoaded" car le script est déjà en bas de page
-        // et les éléments existent déjà.
-
-        const inputs = document.querySelectorAll('.js-qty');
-
-        inputs.forEach(input => {
-            input.addEventListener('change', function() {
-                const form = this.closest('form');
+            <div class="d-flex justify-content-end align-items-center mt-3">
+                <a href="{{ path('product_index') }}" class="btn btn-secondary me-3">
+                    <i class="fas fa-arrow-left"></i> {{ 'cartpage.continue'|trans }}
+                </a>
                 
-                const value = parseInt(this.value);
+                <a href="{{ path('order_add') }}" class="btn btn-success btn-lg">
+                    <i class="fas fa-check"></i> {{ 'cartpage.pay'|trans }}
+                    {# On peut aussi cibler ce total si on veut qu'il se mette à jour, 
+                       mais pour simplifier on le laisse statique ou on l'enveloppe aussi #}
+                </a>
+            </div>
 
-                if (value <= 0) {
-                    const confirmation = confirm("Voulez-vous vraiment retirer cet article du panier ?");
-                    
-                    if (confirmation) {
-                        form.submit();
-                    } else {
-                        this.value = 1;
-                    }
-                } else {
-                    form.submit();
-                }
-            });
-        });
-    </script>
+        {% else %}
+            <div class="alert alert-warning text-center py-5">
+                <h4 class="alert-heading">{{ 'cartpage.empty'|trans }}</h4>
+                <p class="mb-0">{{ 'cartpage.message'|trans }} 🎮</p>
+                <a href="{{ path('product_index') }}" class="btn btn-primary mt-3">{{ 'cartpage.continue'|trans }}</a>
+            </div>
+        {% endif %}
+
+    </div>
 {% endblock %}

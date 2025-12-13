@@ -37,6 +37,12 @@ class OrderController extends AbstractController
             $product = $productRepository->find($id);
 
             if ($product) {
+                if ($product->getStock() < $quantity) {
+                    $this->addFlash('danger', 'Désolé, le produit ' . $product->getName() . ' n\'est plus disponible en quantité suffisante.');
+                    return $this->redirectToRoute('cart_index');
+                }
+                $product->setStock($product->getStock() - $quantity);
+
                 $orderItem = new OrderItem();
                 $orderItem->setProduct($product);
                 $orderItem->setQuantity($quantity);

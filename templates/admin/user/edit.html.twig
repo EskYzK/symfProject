@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Utilisateur{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Modifier l'utilisateur <small class="text-muted">{{ user.email }}</small></h1>
+    <hr>
+    
+    <div class="row">
+        {# --- COLONNE GAUCHE : FORMULAIRE --- #}
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-user-shield"></i> Gérer les rôles
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.roles) }}
+                        
+                        <div class="alert alert-info mt-3">
+                            <small><i class="fas fa-info-circle"></i> Note : Un administrateur a accès à tout le Backoffice.</small>
+                        </div>
+
+                        <button class="btn btn-success mt-3 w-100">
+                            <i class="fas fa-save"></i> Sauvegarder les modifications
+                        </button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        
+        {# --- COLONNE DROITE : INFO --- #}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Informations personnelles
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Prénom :</strong> {{ user.firstname }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Nom :</strong> {{ user.lastname }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Email :</strong> <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>ID :</strong> #{{ user.id }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <a href="{{ path('admin_user_index') }}" class="btn btn-outline-secondary mt-4">
+        <i class="fas fa-arrow-left"></i> Retour à la liste
+    </a>
+</div>
+{% endblock %}

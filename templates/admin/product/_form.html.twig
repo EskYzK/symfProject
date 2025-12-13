@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-8">
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.price) }}
+            {{ form_row(form.stock) }}
+            {{ form_row(form.status) }}
+            {{ form_row(form.category) }}
+        </div>
+    </div>
+    <button class="btn btn-success mt-3">{{ button_label|default('Enregistrer') }}</button>
+    <a href="{{ path('admin_product_index') }}" class="btn btn-secondary mt-3">Retour</a>
+{{ form_end(form) }}
