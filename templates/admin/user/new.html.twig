@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un Utilisateur{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Créer un nouvel utilisateur</h1>
+    <hr>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.firstname) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.lastname) }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form_row(form.email) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_row(form.plainPassword) }}
+                            <small class="text-muted">Communiquez ce mot de passe à l'utilisateur.</small>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_row(form.roles) }}
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ path('admin_user_index') }}" class="btn btn-secondary">Annuler</a>
+                            <button class="btn btn-success">Créer le compte</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
