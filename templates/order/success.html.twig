@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande Confirmée{% endblock %}
+{% block title %}Commande Validée !{% endblock %}
 
 {% block body %}
-    <h1>Merci pour votre commande !</h1>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 text-center">
+            <div class="card shadow p-5">
+                <div class="mb-4">
+                    {# Si tu utilises FontAwesome #}
+                    <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                </div>
+                
+                <h1 class="text-success mb-3">Merci pour votre achat !</h1>
+                
+                <p class="lead">
+                    Votre commande a bien été enregistrée.
+                </p>
+                
+                <div class="alert alert-light border my-4">
+                    <strong>Numéro de commande :</strong> <span class="text-primary">{{ reference }}</span>
+                </div>
 
-    <p>Votre commande numéro {{ order.id }} a été passée avec succès.</p>
+                <p>Vous allez recevoir un email de confirmation très bientôt.</p>
 
-    <h2>Détails de la commande</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Produit</th>
-                <th>Quantité</th>
-                <th>Prix</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in order.orderItems %}
-                <tr>
-                    <td>{{ item.product.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.price }} €</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <p><strong>Total de la commande :</strong> {{ order.total }} €</p>
-
-    <a href="{{ path('product_index') }}" class="btn btn-primary">Continuer mes achats</a>
+                <div class="mt-4">
+                    <a href="{{ path('app_account') }}" class="btn btn-outline-primary">Voir mes commandes</a>
+                    <a href="{{ path('product_index') }}" class="btn btn-primary">Retour à la boutique</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

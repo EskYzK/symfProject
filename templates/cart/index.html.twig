@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Panier{% endblock %}
+{% block title %}Mon Panier{% endblock %}
 
 {% block body %}
-    <h1>Votre Panier</h1>
+    <h1 class="my-4">Votre Panier</h1>
 
     {% if items|length > 0 %}
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Produit</th>
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Total</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,15 +21,11 @@
                     <tr>
                         <td>{{ item.product.name }}</td>
                         <td>{{ item.product.price }} €</td>
-                        <td>
-                            <a href="{{ path('cart_remove', {id: item.product.id}) }}" class="btn btn-sm btn-secondary">-</a>
-                            {{ item.quantity }}
-                            <a href="{{ path('cart_add', {id: item.product.id}) }}" class="btn btn-sm btn-secondary">+</a>
-                        </td>
+                        <td>{{ item.quantity }}</td>
                         <td>{{ item.product.price * item.quantity }} €</td>
                         <td>
-                            <a href="{{ path('cart_delete', {id: item.product.id}) }}" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
+                            <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                                Supprimer
                             </a>
                         </td>
                     </tr>
@@ -37,19 +33,25 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-right"><strong>Total :</strong></td>
-                    <td>{{ total }} €</td>
-                    <td></td>
+                    <td colspan="3" class="text-end"><strong>Total :</strong></td>
+                    <td colspan="2"><strong>{{ total }} €</strong></td>
                 </tr>
             </tfoot>
         </table>
-
-        <div>
-            <a href="{{ path('cart_clear') }}" class="btn btn-warning">Vider le panier</a>
-            <a href="{{ path('order_create') }}" class="btn btn-success">Passer la commande</a>
+        
+        <div class="d-flex justify-content-end align-items-center mt-3">
+            <a href="{{ path('product_index') }}" class="btn btn-secondary me-3">
+                <i class="fas fa-arrow-left"></i> Continuer mes achats
+            </a>
+            
+            {# Le bouton Payer #}
+            <a href="{{ path('order_add') }}" class="btn btn-success btn-lg">
+                <i class="fas fa-check"></i> Payer {{ total }} €
+            </a>
         </div>
-
+        
     {% else %}
-        <p>Votre panier est vide.</p>
+        <div class="alert alert-warning">Votre panier est vide.</div>
+        <a href="{{ path('product_index') }}" class="btn btn-primary">Voir les produits</a>
     {% endif %}
 {% endblock %}

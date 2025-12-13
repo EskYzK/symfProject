@@ -12,14 +12,14 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        // Crée une image pour chaque produit
         for ($i = 0; $i < 4; $i++) {
             $image = new Image();
-            $image->setUrl('https://via.placeholder.com/640x480.png/0000ff/ffffff?Text=Image+' . $i);
             
-            // Récupère la référence du produit et l'associe à l'image
             /** @var Product $product */
-            $product = $this->getReference('product_' . $i,Product::class);
+            $product = $this->getReference('product_' . $i, Product::class);
+            
+            $imageName = $product->getName() . '.jpg';
+            $image->setUrl('images/products/' . $imageName);
             $image->setProduct($product);
             
             $manager->persist($image);
