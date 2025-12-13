@@ -19,6 +19,7 @@ productpage:
         Cyberpunk 2077: "巨大都市ナイトシティを舞台にしたオープンワールドアクションRPG。"
         Red Dead Redemption 2: "西部開拓時代を舞台にしたオープンワールドアクションアドベンチャーゲーム。"
         "The Witcher 3: Wild Hunt" : "豊かなストーリーと印象的なキャラクターを備えたオープンワールド RPG。"
+    add: "カートに追加"
 
 cartpage:
     title: "カートの中身"
@@ -38,3 +39,4 @@ orderpage:
     commande: "注文番号："
     montant: "合計金額："
     voir: "注文を表示する"
+    merci: "ご注文ありがとうございます！"

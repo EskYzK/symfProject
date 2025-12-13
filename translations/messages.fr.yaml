@@ -18,6 +18,7 @@ productpage:
         Cyberpunk 2077: "Un RPG d'action en monde ouvert se déroulant dans la mégalopole de Night City."
         Red Dead Redemption 2: "Un jeu d'action-aventure en monde ouvert se déroulant à l'époque du Far West."
         "The Witcher 3: Wild Hunt": "Un RPG en monde ouvert avec une histoire riche et des personnages mémorables."
+    add: "Ajouter au panier"
 
 cartpage:
     title: "Votre Panier"
@@ -37,3 +38,4 @@ orderpage:
     commande: "Numéro de commande :"
     montant: "Montant total :"
     voir: "Voir mes commandes"
+    merci: "Merci pour votre commande !"
