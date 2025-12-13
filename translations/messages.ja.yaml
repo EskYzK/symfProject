@@ -32,25 +32,9 @@ cartpage:
     total: "合計"
     message: "早くバスケットをいっぱいにしてください!"
 
-
-menu:
-    
-    home: "ホーム"
-    
-    logout: "ログアウト"
-
-cart:
-    add: "カートに入れる"
-    
-    
-    
-
-
-
-
-    
-    
-    
-
-
-    
+orderpage:
+    header: "注文が確定しました！"
+    message: "ご注文は正常に登録されており、できるだけ早く処理されます。"
+    commande: "注文番号："
+    montant: "合計金額："
+    voir: "注文を表示する"

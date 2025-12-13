@@ -7,14 +7,12 @@
     <div class="login-form">
         <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
 
-        {# Affiche les erreurs s'il y en a (ex: Mauvais mot de passe) #}
         {% if error %}
             <div class="alert alert-danger">
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
 
-        {# Affiche le dernier email saisi pour ne pas avoir à le retaper #}
         <form method="post" action="{{ path('app_login') }}">
             
             <div class="mb-3">
@@ -27,7 +25,6 @@
                 <input type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
             </div>
 
-            {# --- C'EST ÇA QUI MANQUAIT SÛREMENT --- #}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <div class="d-grid gap-2">

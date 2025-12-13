@@ -31,29 +31,9 @@ cartpage:
     total : "Total"
     message: "Allez vite remplir votre panier !"
 
-menu:
-    
-    home: "Accueil"
-    
-    
-    
-    
-    logout: "Se déconnecter"
-
-cart:
-    add: "Ajouter au panier"
-    
-    
-    
-    
-
-
-
-product:
-    
-    
-    
-    
-
-
-
+orderpage:
+    header: "Commande confirmée !"
+    message: "Votre commande a bien été enregistrée et sera traitée dans les plus brefs délais."
+    commande: "Numéro de commande :"
+    montant: "Montant total :"
+    voir: "Voir mes commandes"
