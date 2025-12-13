@@ -3,15 +3,19 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Entity\Image;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface; 
+
 
 #[Route('/admin/product')]
 #[IsGranted('ROLE_ADMIN')]
@@ -37,8 +41,31 @@ class ProductController extends AbstractController
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('kernel.project_dir') . '/public/images/products',
+                        $newFilename
+                    );
+
+                    $img = new Image();
+                    $img->setUrl('images/products/' . $newFilename);
+                    $product->addImage($img);
+
+                } catch (FileException $e) {
+                }
+            }
+
             $entityManager->persist($product);
             $entityManager->flush();
 
@@ -53,12 +80,40 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'admin_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(
+        Request $request, 
+        Product $product, 
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger
+    ): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('kernel.project_dir') . '/public/images/products',
+                        $newFilename
+                    );
+
+                    $img = new Image();
+                    $img->setUrl('images/products/' . $newFilename);
+                    $product->addImage($img);
+
+                } catch (FileException $e) {
+                    // ...
+                }
+            }
+
             $entityManager->flush();
 
             $this->addFlash('success', 'Produit modifié avec succès !');

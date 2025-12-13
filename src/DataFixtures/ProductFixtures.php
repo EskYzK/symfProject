@@ -47,7 +47,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setPrice($productData['price']);
             $stock = mt_rand(0, 100);
             $product->setStock($stock);
-            $product->setStatus($stock > 0 ? ProductStatus::dispo : ProductStatus::rupture);
+            $product->setStatus($stock > 0 ? ProductStatus::AVAILABLE : ProductStatus::OUT_OF_STOCK);
             $product->setCategory($this->getReference($productData['category'], Category::class));            
             $manager->persist($product);
             $this->addReference('product_' . $key, $product);
