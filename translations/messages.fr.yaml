@@ -3,6 +3,7 @@ header:
     cart: "Panier"
     account: "Mon Compte"
     login: "Connexion"
+    admin: "Tableau de bord"
 
 mainpage:
     header: "Bienvenue sur GameO'Center"

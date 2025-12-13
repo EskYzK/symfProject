@@ -3,6 +3,7 @@ header:
     cart: "カート"
     account: "マイアカウント"
     login: "ログイン"
+    admin: "ダッシュボード"
 
 
 mainpage:

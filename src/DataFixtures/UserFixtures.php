@@ -18,19 +18,15 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // --- 1. Admin ---
         $admin = new User();
         $admin->setEmail('admin@example.com');
         $admin->setFirstName('Admin');
         $admin->setLastName('Test');
         $admin->setRoles(['ROLE_ADMIN']);
-
         $admin->setPassword(
             $this->passwordHasher->hashPassword($admin, 'admin123')
         );
-
         $manager->persist($admin);
-
         $this->addReference('admin', $admin);
 
         for ($i = 1; $i <= 5; $i++) {
@@ -39,14 +35,11 @@ class UserFixtures extends Fixture
             $user->setFirstName('User'.$i);
             $user->setLastName('Test');
             $user->setRoles(['ROLE_USER']);
-
             $user->setPassword(
                 $this->passwordHasher->hashPassword($user, 'password')
             );
-
             $manager->persist($user);
 
-            // IMPORTANT : ces références seront utilisées dans AddressFixtures
             $this->addReference('user_'.$i, $user);
         }
 
