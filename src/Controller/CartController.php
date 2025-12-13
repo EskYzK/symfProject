@@ -8,8 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -40,19 +42,29 @@ class CartController extends AbstractController
 
     #[Route('/add/{id}', name: 'cart_add')]
     #[IsGranted('ROLE_USER')]
-    public function add($id, SessionInterface $session): Response
+    public function add($id, SessionInterface $session, Request $request): Response
     {
         $panier = $session->get('panier', []);
 
+        // On récupère la quantité du formulaire (1 par défaut si vide)
+        // 'qty' sera le nom de notre input dans le HTML
+        $quantity = $request->request->getInt('qty', 1);
+
+        // Sécurité : on s'assure qu'on ajoute au moins 1 produit
+        if ($quantity < 1) {
+            $quantity = 1;
+        }
+
         if (!empty($panier[$id])) {
-            $panier[$id]++;
+            $panier[$id] += $quantity;
         } else {
-            $panier[$id] = 1;
+            $panier[$id] = $quantity;
         }
 
         $session->set('panier', $panier);
 
-        $this->addFlash('success', 'Produit ajouté au panier !');
+        // Petit message flash dynamique
+        $this->addFlash('success', 'Produit ajouté au panier (x' . $quantity . ') !');
 
         return $this->redirectToRoute('product_index');
     }
