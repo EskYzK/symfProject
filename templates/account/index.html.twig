@@ -1,22 +1,78 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte{% endblock %}
+{% block title %}Mon Compte{% endblock %}
 
 {% block body %}
 <div class="account-container">
-    <h1>Mon compte</h1>
+    <h1>Mon Espace Client</h1>
 
-    <div class="account-card">
-        <h2>Informations personnelles</h2>
-
-        <p><strong>Prénom :</strong> {{ user.firstName }}</p>
-        <p><strong>Nom :</strong> {{ user.lastName }}</p>
-        <p><strong>Email :</strong> {{ user.email }}</p>
-
-        <div class="account-actions">
-            <a href="#" class="btn edit">Modifier mon profil</a>
-            <a href="{{ path('app_logout') }}" class="btn logout">Se déconnecter</a>
+    {# --- Carte d'informations --- #}
+    <div class="account-card mb-5">
+        <h2>Mes informations</h2>
+        <div class="row">
+            <div class="col-md-2 text-center mb-3">
+                {# Image de profil générique #}
+                <img src="https://ui-avatars.com/api/?name={{ app.user.firstname }}+{{ app.user.lastname }}&background=0056b3&color=fff&size=128" class="rounded-circle" alt="Avatar">
+            </div>
+            <div class="col-md-10">
+                <p><strong>Prénom :</strong> {{ app.user.firstname }}</p>
+                <p><strong>Nom :</strong> {{ app.user.lastname }}</p>
+                <p><strong>Email :</strong> {{ app.user.email }}</p>
+                
+                <div class="account-actions">
+                    <a href="#" class="btn edit">Modifier mon profil</a>
+                    <a href="{{ path('app_logout') }}" class="btn logout">Se déconnecter</a>
+                </div>
+            </div>
         </div>
+    </div>
+
+    {# --- Historique des commandes --- #}
+    <div class="account-card">
+        <h2>Historique de mes commandes</h2>
+
+        {% if orders is empty %}
+            <div class="alert alert-info">
+                Vous n'avez pas encore passé de commande. 
+                <a href="{{ path('product_index') }}">Allez voir nos jeux !</a>
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td><strong>{{ order.reference }}</strong></td>
+                                <td>{{ order.createdAt|date('d/m/Y à H:i') }}</td>
+                                <td>
+                                    {# Affichage conditionnel du badge de statut #}
+                                    {% if order.status == 'en_attente' %}
+                                        <span class="badge bg-secondary">En attente</span>
+                                    {% elseif order.status == 'payee' %}
+                                        <span class="badge bg-success">Payée</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ order.status }}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-primary font-weight-bold">{{ order.total }} €</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" disabled>Détails</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -31,10 +31,8 @@ class UserFixtures extends Fixture
 
         $manager->persist($admin);
 
-        // On garde une référence au cas où d’autres fixtures veulent l’utiliser
         $this->addReference('admin', $admin);
 
-        // --- 2. Utilisateurs classiques ---
         for ($i = 1; $i <= 5; $i++) {
             $user = new User();
             $user->setEmail('user'.$i.'@example.com');
