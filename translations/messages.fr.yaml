@@ -1,0 +1,18 @@
+menu:
+    home: "Accueil"
+    products: "Produits"
+    cart: "Panier"
+    account: "Mon Compte"
+    login: "Connexion"
+    logout: "Se déconnecter"
+
+cart:
+    add: "Ajouter au panier"
+    title: "Votre Panier"
+    empty: "Votre panier est vide."
+    pay: "Payer"
+    continue: "Continuer mes achats"
+
+product:
+    price: "Prix"
+    no_stock: "Rupture de stock"

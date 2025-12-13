@@ -1,0 +1,18 @@
+menu:
+    home: "ホーム"
+    products: "商品"
+    cart: "カート"
+    account: "マイアカウント"
+    login: "ログイン"
+    logout: "ログアウト"
+
+cart:
+    add: "カートに入れる"
+    title: "カートの中身"
+    empty: "カートは空です。"
+    pay: "支払う"
+    continue: "買い物を続ける"
+
+product:
+    price: "価格"
+    no_stock: "在庫切れ"
