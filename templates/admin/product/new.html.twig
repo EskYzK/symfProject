@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block title %}Nouveau Produit{% endblock %}
+{% block title %}{{ 'productnew.header'|trans }}{% endblock %}
 {% block body %}
     <div class="container mt-4">
-        <h1>Créer un nouveau produit</h1>
+        <h1>{{ 'productnew.title'|trans }}</h1>
         {% include 'admin/product/_form.html.twig' %}
     </div>
 {% endblock %}

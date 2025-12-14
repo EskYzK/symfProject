@@ -97,7 +97,7 @@ dashboard:
     linkword: "à"
     noorder: "Aucune commande pour le moment."
 
-orderedit:
+productlist:
     title: "Gestion des Produits"
     new: "Nouveau Produit"
     name: "Nom"
@@ -105,4 +105,21 @@ orderedit:
     stock: "Quantité en stock"
     status: "Statut"
     actions: "Actions"
-    noproduct: "Pas de produit"
+    noproduct: "Aucun produit trouvé"
+
+productnew:
+    header: "Nouveau Produit"
+    title: "Créer un nouveau produit"
+    name: "Nom du produit"
+    desc: "Description"
+    category: "Catégorie"
+    status: "Statut"
+    stock: "Stock disponible"
+    price: "Prix"
+    return: "Retour"
+    save: "Enregistrer"
+
+productedit:
+    header: "Modifier Produit"
+    title: "Modifier le produit"
+    update: "Mettre à jour"

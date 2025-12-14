@@ -97,12 +97,29 @@ dashboard:
     linkword: "|"
     noorder: "現時点では注文はありません。"
 
-orderadmin:
-    title: "Gestion des Produits"
-    new: "Nouveau Produit"
-    name: "Nom"
-    price: "Prix"
-    stock: "Quantité en stock"
-    status: "Statut"
-    actions: "Actions"
-    noproduct: "Pas de produit"
+productlist:
+    title: "製品管理"
+    new: "新製品"
+    name: "名前"
+    price: "価格"
+    stock: "在庫数"
+    status: "状態"
+    actions: "アクション"
+    noproduct: "製品が見つかりませんでした"
+
+productnew:
+    header: "新製品"
+    title: "新しい製品を作成する"
+    name: "製品名"
+    desc: "説明"
+    category: "カテゴリ"
+    status: "状態"
+    stock: "在庫あり"
+    price: "価格"
+    return: "戻る"
+    save: "保存"
+
+productedit:
+    header: "製品の編集"
+    title: "製品の編集"
+    update: "更新するには"
