@@ -200,3 +200,4 @@ profile:
     firstname: "Prénom"
     lastname: "Nom"
     email: "Email"
+    temppwd: "Mot de passe provisoire"

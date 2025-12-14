@@ -18,12 +18,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, ['label' => 'Email'])
-            ->add('firstname', TextType::class, ['label' => 'Prénom'])
-            ->add('lastname', TextType::class, ['label' => 'Nom'])
+            ->add('email', EmailType::class, ['label' => 'profile.email'])
+            ->add('firstname', TextType::class, ['label' => 'profile.firstname'])
+            ->add('lastname', TextType::class, ['label' => 'profile.lastname'])
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
-                'label' => 'Mot de passe provisoire',
+                'label' => 'profile.temppwd',
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez entrer un mot de passe']),
@@ -31,10 +31,10 @@ class UserType extends AbstractType
                 ],
             ])
             ->add('roles', ChoiceType::class, [
-                'label' => 'Rôles',
+                'label' => 'profile.roles',
                 'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Administrateur' => 'ROLE_ADMIN',
+                    'profile.admin' => 'ROLE_ADMIN',
+                    'profile.user' => 'ROLE_USER',
                 ],
                 'multiple' => true,
                 'expanded' => true,

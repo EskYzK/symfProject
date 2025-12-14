@@ -159,6 +159,11 @@ useredit:
     roles: "役割の管理"
     note: "注: 管理者はバックオフィス全体にアクセスできます。"
     save: "変更を保存する"
+    persinfo: "個人情報"
+    firstname: "ファーストネーム ："
+    lastname: "名前 ："
+    email: "電子メール:"
+    return: "リストに戻る"
 
 formproduct:
     avai: "利用可能"
@@ -195,3 +200,4 @@ profile:
     firstname: "ファーストネーム"
     lastname: "名前"
     email: "電子メール"
+    temppwd: "一時パスワード"
