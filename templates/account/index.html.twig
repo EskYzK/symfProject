@@ -1,59 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Compte{% endblock %}
+{% block title %}{{ 'account.header'|trans }}{% endblock %}
 
 {% block body %}
 <div class="account-container">
-    <h1>Mon Espace Client</h1>
+    <h1>{{ 'account.title'|trans }}</h1>
 
     {# --- Carte d'informations --- #}
     <div class="account-card mb-5">
-        <h2>Mes informations</h2>
+        <h2>{{ 'account.information'|trans }}</h2>
         <div class="row">
             <div class="col-md-2 text-center mb-3">
-                {# Image de profil générique #}
                 <img src="https://ui-avatars.com/api/?name={{ app.user.firstname }}+{{ app.user.lastname }}&background=0056b3&color=fff&size=128" class="rounded-circle" alt="Avatar">
             </div>
             <div class="col-md-10">
-                <p><strong>Prénom :</strong> {{ app.user.firstname }}</p>
-                <p><strong>Nom :</strong> {{ app.user.lastname }}</p>
-                <p><strong>Email :</strong> {{ app.user.email }}</p>
+                <p><strong>{{ 'account.firstname'|trans }}</strong> {{ app.user.firstname }}</p>
+                <p><strong>{{ 'account.lastname'|trans }}</strong> {{ app.user.lastname }}</p>
+                <p><strong>{{ 'account.email'|trans }}</strong> {{ app.user.email }}</p>
                 
                 <div class="account-actions">
-                    <a href="#" class="btn edit">Modifier mon profil</a>
-                    <a href="{{ path('app_logout') }}" class="btn logout">Se déconnecter</a>
+                    <a href="#" class="btn edit">{{ 'account.edit'|trans }}</a>
+                    <a href="{{ path('app_logout') }}" class="btn logout">{{ 'account.delete'|trans }}</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="account-card">
-        <h2>Historique de mes commandes</h2>
+        <h2>{{ 'account.history'|trans }}</h2>
 
         {% if orders is empty %}
             <div class="alert alert-info">
-                Vous n'avez pas encore passé de commande. 
-                <a href="{{ path('product_index') }}">Allez voir nos jeux !</a>
+                {{ 'account.noorders'|trans }}
+                <a href="{{ path('product_index') }}">{{ 'account.redirect'|trans }}</a>
             </div>
         {% else %}
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Référence</th>
-                            <th>Date</th>
-                            <th>Statut</th>
-                            <th>Total</th>
-                            <th>Actions</th>
+                            <th>{{ 'account.reference'|trans }}</th>
+                            <th>{{ 'account.date'|trans }}</th>
+                            <th>{{ 'account.status'|trans }}</th>
+                            <th>{{ 'account.total'|trans }}</th>
+                            <th>{{ 'account.actions'|trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for order in orders %}
                             <tr>
                                 <td><strong>{{ order.reference }}</strong></td>
-                                <td>{{ order.createdAt|date('d/m/Y à H:i') }}</td>
+                                <td>{{ order.createdAt|date('d/m/Y ' ~ ('account.linkword'|trans) ~ ' H:i') }}</td>
                                 <td>
-                                    {# Affichage conditionnel du badge de statut #}
                                     {% if order.status == 'en_attente' %}
                                         <span class="badge bg-secondary">En attente</span>
                                     {% elseif order.status == 'payee' %}
@@ -64,7 +62,7 @@
                                 </td>
                                 <td class="text-primary font-weight-bold">{{ order.total }} €</td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-primary" disabled>Détails</button>
+                                    <button class="btn btn-sm btn-outline-primary" disabled>{{ 'account.detail'|trans }}</button>
                                 </td>
                             </tr>
                         {% endfor %}
