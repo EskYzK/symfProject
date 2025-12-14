@@ -30,11 +30,20 @@
                         <p class="card-text">{{ ('productpage.description.' ~ product.name)|trans|slice(0, 100) }}...</p>
                         
                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <span class="h4 mb-0 text-primary">{{ product.price }} €</span>
+                            <div class="d-flex flex-column">
+                                <span class="h4 mb-0 text-primary">{{ product.price }} €</span>
+                                {# Affiche le stock pour t'aider à comprendre #}
+                                <small class="text-muted" style="font-size: 0.8rem;">Stock : {{ product.stock }}</small>
+                            </div>
+                            
                             {% if product.status.value == 'OUT_OF_STOCK' %}
-                                <span class="text-danger fw-bold">
-                                    <i class="fas fa-times-circle"></i> {{ 'productpage.out_of_stock'|trans }}
-                                </span>
+                                {# CAS RUPTURE : Bouton grisé #}
+                                <div class="d-flex align-items-center">
+                                    <input type="number" disabled value="1" class="form-control me-2" style="width: 70px; background-color: #e9ecef;">
+                                    <button class="btn btn-secondary" disabled>
+                                        <i class="fas fa-times-circle"></i> {{ 'product.out_of_stock'|trans }}
+                                    </button>
+                                </div>
                             {% else %}
                                 <form action="{{ path('cart_add', {id: product.id}) }}" method="post" class="d-flex align-items-center" data-turbo="false">
                                     <input type="number" name="qty" value="1" min="1" max="{{ product.stock }}" class="form-control me-2" style="width: 70px;">

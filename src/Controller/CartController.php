@@ -59,15 +59,7 @@ class CartController extends AbstractController
         $quantity = $request->request->getInt('qty', 1);
         $quantityInCart = $panier[$id] ?? 0;
 
-        if (($quantityInCart + $quantity) > $product->getStock()) {
-            $this->addFlash('warning', sprintf(
-                'Stock insuffisant ! Vous avez déjà %d articles dans le panier et il n\'en reste que %d.',
-                $quantityInCart,
-                $product->getStock()
-            ));
-            
-            return $this->redirectToRoute('product_index');
-        }
+        
 
         if (!empty($panier[$id])) {
             $panier[$id] += $quantity;
@@ -88,11 +80,23 @@ class CartController extends AbstractController
 
     #[Route('/update/{id}', name: 'cart_update')]
     #[IsGranted('ROLE_USER')]
-    public function update($id, SessionInterface $session, Request $request): Response
+    public function update($id, SessionInterface $session, Request $request, ProductRepository $productRepository): Response
     {
         $panier = $session->get('panier', []);
         $quantity = $request->request->getInt('qty');
+        
+        $product = $productRepository->find($id);
 
+        if ($product) {
+            if ($quantity > $product->getStock()) {
+                $this->addFlash('warning', sprintf(
+                    'Désolé, vous ne pouvez pas commander plus de %d exemplaires de "%s".',
+                    $product->getStock(),
+                    $product->getName()
+                ));
+                $quantity = $product->getStock();
+            }
+        }
         if ($quantity > 0) {
             $panier[$id] = $quantity;
         } else {
