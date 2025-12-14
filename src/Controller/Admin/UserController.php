@@ -43,7 +43,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // 1. On récupère le mot de passe en clair depuis le formulaire
             $plainPassword = $form->get('plainPassword')->getData();
 
             // 2. On le hache et on l'assigne à l'utilisateur

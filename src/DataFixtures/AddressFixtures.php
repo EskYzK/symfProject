@@ -19,8 +19,6 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
             $address->setPostalCode('7500' . $i);
             $address->setCountry('FR');
 
-            // ⚠️ ICI : on utilise les références créées dans UserFixtures
-            // et on passe bien 2 arguments à getReference(...)
             /** @var User $user */
             $user = $this->getReference('user_'.$i, User::class);
             $address->setUser($user);

@@ -1,5 +1,4 @@
 <div {{ attributes }}>
-    {# Barre de recherche #}
     <div class="row mb-4 justify-content-center">
         <div class="col-md-6">
             <input 
@@ -12,12 +11,10 @@
         </div>
     </div>
 
-    {# Grille de résultats #}
     <div class="row" data-loading="addClass(opacity-50)">
         {% for product in this.products %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    {# Récupération de l'image #}
                     {% set mainImage = product.images|first %}
                     
                     <div style="height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #eee;">
@@ -48,7 +45,6 @@
         {% else %}
             <div class="col-12 text-center mt-5">
                 <div class="alert alert-warning">
-                    {# On passe la variable "query" à la traduction #}
                     {{ 'productpage.noresults'|trans({'%query%': query}) }}
                 </div>
             </div>

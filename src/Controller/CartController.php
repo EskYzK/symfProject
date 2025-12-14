@@ -51,9 +51,6 @@ class CartController extends AbstractController
         }
 
         $session->set('panier', $panier);
-        
-        // Si on vient du panier, on reste sur le panier, sinon on retourne aux produits
-        // (On détecte d'où on vient grâce à la page précédente)
         $referer = $request->headers->get('referer');
         if ($referer && str_contains($referer, '/cart')) {
             return $this->redirectToRoute('cart_index');

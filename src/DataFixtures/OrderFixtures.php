@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Order;
-use App\Entity\User; // Import indispensable
+use App\Entity\User;
 use App\Enum\OrderStatus;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;

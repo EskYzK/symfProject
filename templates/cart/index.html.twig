@@ -3,13 +3,11 @@
 {% block title %}{{ 'cartpage.title'|trans }}{% endblock %}
 
 {% block body %}
-    {# --- ON CONNECTE LE CONTROLLER ICI --- #}
     <div data-controller="cart"> 
         
         <h1 class="my-4">{{ 'cartpage.title'|trans }}</h1>
 
         {% if items|length > 0 %}
-            {# --- CIBLE : LE CONTENU DU TABLEAU --- #}
             <div class="table-responsive" data-cart-target="content">
                 <table class="table table-striped align-middle">
                     <thead>
@@ -35,7 +33,6 @@
                                 <td>{{ item.product.price }} €</td>
                                 <td>
                                     <form action="{{ path('cart_update', {id: item.product.id}) }}" method="post">
-                                        {# --- ACTION STIMULUS SUR LE CHANGEMENT --- #}
                                         <input type="number" 
                                                name="qty" 
                                                value="{{ item.quantity }}" 
@@ -58,7 +55,6 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="text-end"><strong>{{ 'cartpage.total'|trans }}</strong></td>
-                            {# --- CIBLE : LE TOTAL --- #}
                             <td colspan="2"><strong class="fs-5 text-primary" data-cart-target="total">{{ total }} €</strong></td>
                         </tr>
                     </tfoot>

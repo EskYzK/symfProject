@@ -110,7 +110,6 @@ class ProductController extends AbstractController
                     $product->addImage($img);
 
                 } catch (FileException $e) {
-                    // ...
                 }
             }
 

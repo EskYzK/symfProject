@@ -19,11 +19,9 @@ class LocaleSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         
-        // Essaie de récupérer la locale en session
         if ($locale = $request->getSession()->get('_locale')) {
             $request->setLocale($locale);
         } else {
-            // Sinon utilise la langue par défaut
             $request->setLocale($this->defaultLocale);
         }
     }
@@ -31,7 +29,6 @@ class LocaleSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            // Doit s'exécuter avant le Routeur (priorité 20)
             KernelEvents::REQUEST => [['onKernelRequest', 20]],
         ];
     }

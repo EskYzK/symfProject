@@ -10,24 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin')]
-#[IsGranted('ROLE_ADMIN')] // Sécurité : Seul l'admin rentre ici !
+#[IsGranted('ROLE_ADMIN')]
 class DashboardController extends AbstractController
 {
     #[Route('/', name: 'admin_dashboard')]
     public function index(ProductRepository $productRepo, OrderRepository $orderRepo): Response
     {
-        // 1. Les 5 dernières commandes
         $lastOrders = $orderRepo->findBy([], ['createdAt' => 'DESC'], 5);
-
-        // 2. Calcul du Chiffre d'affaires total (Commandes payées uniquement)
-        // On le fait en PHP simple pour l'instant (on pourra optimiser en SQL plus tard)
         $allPaidOrders = $orderRepo->findBy(['status' => 'payee']);
         $totalSales = 0;
         foreach ($allPaidOrders as $order) {
             $totalSales += $order->getTotal();
         }
 
-        // 3. Stats des produits (Stock vs Rupture)
         $products = $productRepo->findAll();
         $inStock = 0;
         $outOfStock = 0;

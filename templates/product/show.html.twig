@@ -5,7 +5,6 @@
 {% block body %}
     <div class="row mt-5">
         <div class="col-md-6">
-            {# Récupération de la première image #}
             {% set mainImage = product.images|first %}
             {% if mainImage %}
                 <img src="{{ mainImage.url }}" class="img-fluid rounded shadow" alt="{{ product.name }}">
