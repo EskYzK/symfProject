@@ -37,10 +37,11 @@ cartpage:
 orderpage:
     header: "Commande confirmée !"
     message: "Votre commande a bien été enregistrée et sera traitée dans les plus brefs délais."
-    commande: "Numéro de commande :"
-    montant: "Montant total :"
-    voir: "Voir mes commandes"
-    merci: "Merci pour votre commande !"
+    order: "Numéro de commande :"
+    price: "Montant total :"
+    list: "Voir mes commandes"
+    thanks: "Merci pour votre commande !"
+    return: "Retourner à l'accueil"
 
 account:
     title: "Mon Espace Client"
@@ -123,3 +124,14 @@ productedit:
     header: "Modifier Produit"
     title: "Modifier le produit"
     update: "Mettre à jour"
+
+orderindex:
+    header: "Gestion des commandes"
+    noorder: "Aucune commande."
+    detail: "Voir"
+    reference: "Référence"
+    date: "Date"
+    client: "Client"
+    price: "Prix"
+    status: "Statut"
+    actions: "Actions"

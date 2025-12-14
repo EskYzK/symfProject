@@ -37,10 +37,11 @@ cartpage:
 orderpage:
     header: "注文が確定しました！"
     message: "ご注文は正常に登録されており、できるだけ早く処理されます。"
-    commande: "注文番号："
-    montant: "合計金額："
-    voir: "注文を表示する"
-    merci: "ご注文ありがとうございます！"
+    order: "注文番号："
+    price: "合計金額："
+    list: "注文を表示する"
+    thanks: "ご注文ありがとうございます！"
+    return: "ホームページに戻る"
 
 account:
     title: "私の顧客エリア"
@@ -123,3 +124,14 @@ productedit:
     header: "製品の編集"
     title: "製品の編集"
     update: "更新するには"
+
+orderindex:
+    header: "注文管理"
+    noorder: "注文はありません。"
+    detail: "見る"
+    reference: "参照"
+    date: "日付"
+    client: "お客様"
+    price: "価格"
+    status: "状態"
+    actions: "アクション"

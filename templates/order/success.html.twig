@@ -10,22 +10,22 @@
                 <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
             </div>
             
-            <h1 class="h2 mb-3">{{ 'orderpage.merci'|trans }}</h1>
+            <h1 class="h2 mb-3">{{ 'orderpage.thanks'|trans }}</h1>
             <p class="text-muted mb-4">
                 
             </p>
 
             <div class="alert alert-light border">
-                <strong>{{ 'orderpage.commande'|trans }}</strong> <span class="text-primary">{{ order.reference }}</span><br>
-                <strong>{{ 'orderpage.montant'|trans }}</strong> {{ order.total }} €
+                <strong>{{ 'orderpage.order'|trans }}</strong> <span class="text-primary">{{ order.reference }}</span><br>
+                <strong>{{ 'orderpage.price'|trans }}</strong> {{ order.total }} €
             </div>
 
             <div class="d-grid gap-2 d-sm-flex justify-content-center mt-4">
                 <a href="{{ path('app_account') }}" class="btn btn-primary px-4">
-                    {{ 'orderpage.voir'|trans }}
+                    {{ 'orderpage.list'|trans }}
                 </a>
                 <a href="{{ path('product_index') }}" class="btn btn-outline-secondary px-4">
-                    Retour à la boutique
+                    {{ 'orderpage.return'|trans }}
                 </a>
             </div>
         </div>
