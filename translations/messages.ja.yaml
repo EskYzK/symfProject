@@ -61,3 +61,11 @@ account:
     linkword: "|"
     noorders: "まだ注文は行われていません。"
     redirect: "私たちのゲームをぜひチェックしてください!"
+
+login:
+    header: "ログイン"
+    title: "繋がり"
+    email: "電子メール"
+    password: "パスワード"
+    button: "ログイン"
+    home: "ホームページに戻る"

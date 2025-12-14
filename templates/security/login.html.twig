@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter{% endblock %}
+{% block title %}{{ 'login.header'|trans }}{% endblock %}
 
 {% block body %}
 <div class="login-container">
     <div class="login-form">
-        <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
+        <h1 class="h3 mb-3 font-weight-normal text-center">{{ 'login.title'|trans }}</h1>
 
         {% if error %}
             <div class="alert alert-danger">
@@ -16,12 +16,12 @@
         <form method="post" action="{{ path('app_login') }}">
             
             <div class="mb-3">
-                <label for="inputEmail">Email</label>
+                <label for="inputEmail">{{ 'login.email'|trans }}</label>
                 <input type="email" value="{{ last_username }}" name="_username" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             </div>
 
             <div class="mb-3">
-                <label for="inputPassword">Mot de passe</label>
+                <label for="inputPassword">{{ 'login.password'|trans }}</label>
                 <input type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
             </div>
 
@@ -29,12 +29,12 @@
 
             <div class="d-grid gap-2">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">
-                    Se connecter
+                    {{ 'login.button'|trans }}
                 </button>
             </div>
             
             <div class="text-center mt-3">
-                <a href="{{ path('home') }}">Retour à l'accueil</a>
+                <a href="{{ path('home') }}">{{ 'login.home'|trans }}</a>
             </div>
         </form>
     </div>

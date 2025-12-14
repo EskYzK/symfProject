@@ -60,3 +60,11 @@ account:
     linkword: "à"
     noorders: "Vous n'avez pas encore passé de commande."
     redirect: "Allez voir nos jeux !"
+
+login:
+    header: "Se Connecter"
+    title: "Connexion"
+    email: "Email"
+    password: "Mot de passe"
+    button: "Se connecter"
+    home: "Retour à l'accueil"
