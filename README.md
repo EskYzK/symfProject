@@ -41,3 +41,22 @@ symfony server:start
 Suite à cela le site sera disponible et accessible à l'adresse : 
 http://127.0.0.1:8000
 
+-------------- Application --------------
+
+Une fois sur le site, les deux seules pages accessibles sont : la page d'accueil, ainsi que la page des produits. Pour débloquer l'accès aux autres pages, vous pouvez vous connecter via les identifiants suivants :
+
+# Utilisateur lambda
+
+Email : user1@example.com
+Mot de passe : password
+
+Ces identifiants servent à se connecter sur un compte normal, sans droits particuliers.
+Il existe 5 comptes différents utilisant donc comme emails : user1@example.com, user2@example.com, ..., user5@example.com.
+
+# Utilisateur administrateur
+
+Email : admin@example.com
+Mot de passe : admin123
+
+Ces identifiants permettent une connexion sur un compte possédant des droits supérieurs.
+Il peut, par exemple, créer des nouveaux produits, supprimer et ajouter des utilisateurs, etc ...
