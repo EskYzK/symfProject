@@ -6,7 +6,6 @@ header:
     admin: "ダッシュボード"
     search: "研究"
 
-
 mainpage:
     header: "GameO'Centerへようこそ"
     title: "GameO'Centerへようこそ！"
@@ -74,4 +73,26 @@ login:
 search:
     title: "研究"
     bar: "ゲームを検索..."
-    desc: "ゲームを選択すると、ここに詳細が表示されます。"
+    desc: "ゲームを選択すると、ここに詳細が表示されます"
+
+admin:
+    dashboard:
+        header: "管理"
+        title: "ダッシュボード"
+        cat1: "製品"
+        cat2: "注文"
+        cat3: "ユーザー"
+        tile1: "収益"
+        tile2: "在庫のある商品"
+        tile3: "在庫切れ"
+        desctile1: "支払われた注文総額s"
+        desctile2: "販売可能な製品"
+        desctile3: "再入荷予定商品"
+        history: "最新のご注文"
+        reference: "参照"
+        date: "日付"
+        client: "お客様"
+        price: "額"
+        status: "状態"
+        linkword: "|"
+        noorder: "現時点では注文はありません。"
