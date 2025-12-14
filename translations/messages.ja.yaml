@@ -21,6 +21,8 @@ productpage:
         Red Dead Redemption 2: "西部開拓時代を舞台にしたオープンワールドアクションアドベンチャーゲーム。"
         "The Witcher 3: Wild Hunt" : "豊かなストーリーと印象的なキャラクターを備えたオープンワールド RPG。"
     add: "カートに追加"
+    noresults: "検索に一致する製品はありません。"
+    search: "製品を検索する（例：サイバーパンク...）"
 
 cartpage:
     title: "カートの中身"

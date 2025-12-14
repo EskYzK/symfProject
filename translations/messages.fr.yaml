@@ -21,6 +21,8 @@ productpage:
         Red Dead Redemption 2: "Un jeu d'action-aventure en monde ouvert se déroulant à l'époque du Far West."
         "The Witcher 3: Wild Hunt": "Un RPG en monde ouvert avec une histoire riche et des personnages mémorables."
     add: "Ajouter au panier"
+    noresults: "Aucun produit ne correspond à votre recherche"
+    search: "Rechercher un produit (ex: Cyberpunk...)"
 
 cartpage:
     title: "Votre Panier"
