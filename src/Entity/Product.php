@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Product
 {
     #[ORM\Id]
@@ -97,6 +98,11 @@ class Product
     public function setStock(int $stock): static
     {
         $this->stock = $stock;
+        if ($this->stock > 0) {
+            $this->status = ProductStatus::AVAILABLE; 
+        } else {
+            $this->status = ProductStatus::OUT_OF_STOCK;
+        }
 
         return $this;
     }
@@ -182,5 +188,17 @@ class Product
         }
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateStatusAutomatically(): void
+    {
+        if ($this->stock <= 0) {
+            $this->status = ProductStatus::OUT_OF_STOCK;
+        } 
+        elseif ($this->status === ProductStatus::OUT_OF_STOCK && $this->stock > 0) {
+            $this->status = ProductStatus::AVAILABLE;
+        }
     }
 }
