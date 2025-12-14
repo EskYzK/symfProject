@@ -57,6 +57,17 @@ class CartController extends AbstractController
 
         $panier = $session->get('panier', []);
         $quantity = $request->request->getInt('qty', 1);
+        $quantityInCart = $panier[$id] ?? 0;
+
+        if (($quantityInCart + $quantity) > $product->getStock()) {
+            $this->addFlash('warning', sprintf(
+                'Stock insuffisant ! Vous avez déjà %d articles dans le panier et il n\'en reste que %d.',
+                $quantityInCart,
+                $product->getStock()
+            ));
+            
+            return $this->redirectToRoute('product_index');
+        }
 
         if (!empty($panier[$id])) {
             $panier[$id] += $quantity;
@@ -72,7 +83,7 @@ class CartController extends AbstractController
         }
 
         $this->addFlash('success', 'Produit ajouté au panier !');
-        return $this->redirectToRoute('product_index'); // Redirection vers la liste des produits pour voir les messages
+        return $this->redirectToRoute('product_index');
     }
 
     #[Route('/update/{id}', name: 'cart_update')]

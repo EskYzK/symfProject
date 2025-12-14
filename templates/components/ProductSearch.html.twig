@@ -37,7 +37,7 @@
                                 </span>
                             {% else %}
                                 <form action="{{ path('cart_add', {id: product.id}) }}" method="post" class="d-flex align-items-center" data-turbo="false">
-                                    <input type="number" name="qty" value="1" min="1" max="100" class="form-control me-2" style="width: 70px;">
+                                    <input type="number" name="qty" value="1" min="1" max="{{ product.stock }}" class="form-control me-2" style="width: 70px;">
                                     <button type="submit" class="btn btn-success">
                                         <i class="fas fa-cart-plus"></i> {{ 'productpage.add'|trans }}
                                     </button>
