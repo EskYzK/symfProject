@@ -25,11 +25,14 @@
                 <td>{{ order.user.email }}</td>
                 <td class="fw-bold">{{ order.total }} €</td>
                 <td>
-                    {% if order.status == 'payee' %}
-                        <span class="badge bg-success">Payée</span>
-                    {% else %}
-                        <span class="badge bg-secondary">{{ order.status }}</span>
-                    {% endif %}
+                    {% set status_classes = {
+                        'payee': 'bg-success',
+                        'preparation': 'bg-info',
+                        'expediee': 'bg-primary',
+                        'livree': 'bg-dark',
+                        'annulee': 'bg-danger'
+                    } %}
+                    <span class="badge {{ status_classes[order.status] ?? 'bg-secondary' }}">{{ ('orderstatus.' ~ order.status)|trans }}</span>
                 </td>
                 <td>
                     <a href="{{ path('admin_order_show', {'id': order.id}) }}" class="btn btn-sm btn-info text-white">

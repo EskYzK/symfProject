@@ -171,3 +171,10 @@ formproduct:
     price: "価格"
     stock: "在庫数"
     image: "商品画像（JPG、PNG）"
+
+orderstatus:
+    Payée: "有料"
+    En préparation: "準備中"
+    Expédiée: "出荷済み"
+    Livrée: "カラーリング"
+    Annulée: "キャンセル"

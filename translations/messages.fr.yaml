@@ -176,3 +176,10 @@ formproduct:
     price: "Prix"
     stock: "Quantité en stock"
     image: "Image du produit (JPG, PNG)"
+
+orderstatus:
+    Payée: "Payée"
+    En préparation: "En préparation"
+    Expédiée: "Expédiée"
+    Livrée: "Livrée"
+    Annulée: "Annulée"
