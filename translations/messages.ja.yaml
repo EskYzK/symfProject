@@ -4,6 +4,7 @@ header:
     account: "マイアカウント"
     login: "ログイン"
     admin: "ダッシュボード"
+    search: "研究"
 
 
 mainpage:
@@ -69,3 +70,8 @@ login:
     password: "パスワード"
     button: "ログイン"
     home: "ホームページに戻る"
+
+search:
+    title: "研究"
+    bar: "ゲームを検索..."
+    desc: "ゲームを選択すると、ここに詳細が表示されます。"

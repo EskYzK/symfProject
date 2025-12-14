@@ -4,6 +4,7 @@ header:
     account: "Mon Compte"
     login: "Connexion"
     admin: "Tableau de bord"
+    search: "Recherche"
 
 mainpage:
     header: "Bienvenue sur GameO'Center"
@@ -68,3 +69,8 @@ login:
     password: "Mot de passe"
     button: "Se connecter"
     home: "Retour à l'accueil"
+
+search:
+    title: "Recherche"
+    bar: "Rechercher un jeu..."
+    desc: "Sélectionnez un jeu pour voir les détails apparaître ici."

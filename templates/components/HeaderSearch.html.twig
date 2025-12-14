@@ -1,0 +1,28 @@
+<div {{ attributes }} class="p-4 border rounded bg-light">
+    <h3>{{ 'search.title'|trans }}</h3>
+    
+    {{ form_start(form, {
+        attr: {
+            'data-action': 'live#action:prevent',
+            'data-live-action-param': 'save' 
+        }
+    }) }}
+        <div class="mb-3">
+            {{ form_widget(form.product) }}
+        </div>
+    {{ form_end(form) }}
+
+    {% if product %}
+        <div class="alert alert-success mt-3 fade-in">
+            <h4>🎮 {{ product.name }}</h4>
+            <p>Prix : <strong>{{ product.price }} €</strong></p>
+            <p>{{ product.description }}</p>
+            
+            {% if product.images|length > 0 %}
+                <img src="{{ asset(product.images[0].url) }}" alt="{{ product.name }}" style="max-width: 150px;" class="rounded shadow">
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="text-muted mt-3">{{ 'search.desc'|trans }}</p>
+    {% endif %}
+</div>
