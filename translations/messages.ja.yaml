@@ -187,3 +187,11 @@ productstatus:
 userroles:
     admin: "管理者"
     user: "ユーザー"
+
+profile:
+    roles: "役割"
+    user: "ユーザー"
+    admin: "管理者"
+    firstname: "ファーストネーム"
+    lastname: "名前"
+    email: "電子メール"

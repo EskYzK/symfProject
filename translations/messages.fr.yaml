@@ -192,3 +192,11 @@ productstatus:
 userroles:
     admin: "Admin"
     user: "User"
+
+profile:
+    roles: "Rôles"
+    user: "Utilsateur"
+    admin: "Administrateur"
+    firstname: "Prénom"
+    lastname: "Nom"
+    email: "Email"
