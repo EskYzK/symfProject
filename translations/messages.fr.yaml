@@ -183,3 +183,8 @@ orderstatus:
     Expédiée: "Expédiée"
     Livrée: "Livrée"
     Annulée: "Annulée"
+
+productstatus:
+    AVAILABLE: "Disponible"
+    OUT_OF_STOCK: "Rupture de stock"
+    PRE_ORDER: "Précommande"

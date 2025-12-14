@@ -33,7 +33,16 @@
                         {{ product.stock }}
                     </span>
                 </td>
-                <td>{{ product.status.value ?? product.status }}</td> 
+                <td>
+                    {% set status_classes = {
+                        'AVAILABLE': 'bg-success',
+                        'OUT_OF_STOCK': 'bg-danger',
+                        'PRE_ORDER': 'bg-warning'
+                    } %}
+                    <span class="badge {{ status_classes[product.status.value] ?? 'bg-secondary' }}">
+                        {{ ('productstatus.' ~ product.status.value)|trans }}
+                    </span>
+                </td> 
                 <td>
                     <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i>

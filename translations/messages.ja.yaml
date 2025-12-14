@@ -178,3 +178,8 @@ orderstatus:
     Expédiée: "出荷済み"
     Livrée: "カラーリング"
     Annulée: "キャンセル"
+
+productstatus:
+    AVAILABLE: "在庫あり"
+    OUT_OF_STOCK: "在庫切れ"
+    PRE_ORDER: "予約注文"
