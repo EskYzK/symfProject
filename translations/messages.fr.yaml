@@ -164,3 +164,15 @@ useredit:
     lastname: "Nom :"
     email: "Email :"
     return: "Retour à la liste"
+
+formproduct:
+    avai: "Disponible"
+    oos: "Rupture de stock"
+    preorder: "Précommande"
+    status: "Statut"
+    productname: "Nom du produit"
+    desc: "Description"
+    category: "Catégorie"
+    price: "Prix"
+    stock: "Quantité en stock"
+    image: "Image du produit (JPG, PNG)"

@@ -159,3 +159,15 @@ useredit:
     roles: "役割の管理"
     note: "注: 管理者はバックオフィス全体にアクセスできます。"
     save: "変更を保存する"
+
+formproduct:
+    avai: "利用可能"
+    oos: "在庫切れ"
+    preorder: "予約注文"
+    status: "状態"
+    productname: "製品名"
+    desc: "説明"
+    category: "カテゴリ"
+    price: "価格"
+    stock: "在庫数"
+    image: "商品画像（JPG、PNG）"

@@ -23,35 +23,35 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom du produit'
+                'label' => 'formproduct.productname'
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'Prix',
+                'label' => 'formproduct.price',
                 'currency' => 'EUR'
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description'
+                'label' => 'formproduct.desc'
             ])
             ->add('stock', IntegerType::class, [
-                'label' => 'Stock disponible'
+                'label' => 'formproduct.stock'
             ])
             ->add('status', EnumType::class, [
                 'class' => ProductStatus::class,
-                'label' => 'Statut',
+                'label' => 'formproduct.status',
                 'choice_label' => fn ($choice) => match ($choice) {
-                    ProductStatus::AVAILABLE => 'Disponible',
-                    ProductStatus::OUT_OF_STOCK => 'Rupture de stock',
-                    ProductStatus::PRE_ORDER => 'Précommande',
+                    ProductStatus::AVAILABLE => 'formproduct.avai',
+                    ProductStatus::OUT_OF_STOCK => 'formproduct.oos',
+                    ProductStatus::PRE_ORDER => 'formproduct.preorder',
                     default => $choice->name,
                 },
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'label' => 'Catégorie'
+                'label' => 'formproduct.category'
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Image du produit (JPG, PNG)',
+                'label' => 'formproduct.image',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
