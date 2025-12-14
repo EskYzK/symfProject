@@ -27,21 +27,21 @@
                 <td>
                     {% for role in user.roles %}
                         {% if role == 'ROLE_ADMIN' %}
-                            <span class="badge bg-danger">Admin</span>
+                            <span class="badge bg-danger">{{ 'userroles.admin' | trans }}</span>
                         {% else %}
-                            <span class="badge bg-primary">User</span>
+                            <span class="badge bg-primary">{{ 'userroles.user' | trans }}</span>
                         {% endif %}
                     {% endfor %}
                 </td>
                 <td>
-                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-sm btn-warning" title="Modifier les rôles">
-                        <i class="fas fa-user-edit"></i> {{ 'userindex.edit' | trans}}
+                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-sm btn-warning" title="{{ 'userindex.edit' | trans }}">
+                        <i class="fas fa-user-edit"></i> {{ 'userindex.edit' | trans }}
                     </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5" class="text-center">Aucun utilisateur trouvé.</td>
+                <td colspan="5" class="text-center">{{ 'userindex.nouser' | trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

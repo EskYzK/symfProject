@@ -188,3 +188,7 @@ productstatus:
     AVAILABLE: "Disponible"
     OUT_OF_STOCK: "Rupture de stock"
     PRE_ORDER: "Précommande"
+
+userroles:
+    admin: "Admin"
+    user: "User"

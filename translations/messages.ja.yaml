@@ -183,3 +183,7 @@ productstatus:
     AVAILABLE: "在庫あり"
     OUT_OF_STOCK: "在庫切れ"
     PRE_ORDER: "予約注文"
+
+userroles:
+    admin: "管理者"
+    user: "ユーザー"
