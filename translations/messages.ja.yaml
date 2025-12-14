@@ -23,6 +23,7 @@ productpage:
     add: "カートに追加"
     noresults: "検索に一致する製品はありません。"
     search: "製品を検索する（例：サイバーパンク...）"
+    out_of_stock: "在庫切れ"
 
 cartpage:
     title: "カートの中身"

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Enum\ProductStatus;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +41,20 @@ class CartController extends AbstractController
 
     #[Route('/add/{id}', name: 'cart_add')]
     #[IsGranted('ROLE_USER')]
-    public function add($id, SessionInterface $session, Request $request): Response
+    public function add($id, SessionInterface $session, Request $request, ProductRepository $productRepository): Response
     {
+        $product = $productRepository->find($id);
+
+        if (!$product) {
+            $this->addFlash('danger', 'Produit introuvable.');
+            return $this->redirectToRoute('product_index');
+        }
+
+        if ($product->getStatus() === ProductStatus::OUT_OF_STOCK) {
+            $this->addFlash('danger', 'Impossible d\'ajouter ce produit : Rupture de stock !');
+            return $this->redirectToRoute('product_index');
+        }
+
         $panier = $session->get('panier', []);
         $quantity = $request->request->getInt('qty', 1);
 
@@ -51,13 +65,14 @@ class CartController extends AbstractController
         }
 
         $session->set('panier', $panier);
+        
         $referer = $request->headers->get('referer');
         if ($referer && str_contains($referer, '/cart')) {
             return $this->redirectToRoute('cart_index');
         }
 
         $this->addFlash('success', 'Produit ajouté au panier !');
-        return $this->redirectToRoute('product_index');
+        return $this->redirectToRoute('product_index'); // Redirection vers la liste des produits pour voir les messages
     }
 
     #[Route('/update/{id}', name: 'cart_update')]

@@ -23,6 +23,7 @@ productpage:
     add: "Ajouter au panier"
     noresults: "Aucun produit ne correspond à votre recherche"
     search: "Rechercher un produit (ex: Cyberpunk...)"
+    out_of_stock: "Rupture de stock"
 
 cartpage:
     title: "Votre Panier"
