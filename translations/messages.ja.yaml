@@ -135,3 +135,27 @@ orderindex:
     price: "価格"
     status: "状態"
     actions: "アクション"
+
+userindex:
+    title: "ユーザー管理"
+    new: "新規ユーザー"
+    email: "電子メール"
+    fullname: "フルネーム"
+    roles: "役割"
+    actions: "アクション"
+    edit: "変更するには"
+    nouser: "ユーザーが見つかりませんでした。"
+
+usercreate:
+    header: "ユーザーを作成する"
+    title: "新しいユーザーを作成する"
+    password: "このパスワードをユーザーに伝えます。"
+    cancel: "キャンセル"
+    create: "アカウントを作成する"
+
+useredit:
+    header: "ユーザーの編集"
+    title: "ユーザーの編集"
+    roles: "役割の管理"
+    note: "注: 管理者はバックオフィス全体にアクセスできます。"
+    save: "変更を保存する"

@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion des Utilisateurs{% endblock %}
+{% block title %}{{ 'userindex.title' | trans}}{% endblock %}
 
 {% block body %}
 <div class="container mt-4">
-    <h1>👥 Gestion des Utilisateurs</h1>
+    <h1>👥 {{ 'userindex.title' | trans}}</h1>
     <a href="{{ path('admin_user_new') }}" class="btn btn-primary">
-        <i class="fas fa-user-plus"></i> Nouvel Utilisateur
+        <i class="fas fa-user-plus"></i> {{ 'userindex.new' | trans}}
     </a>
     <table class="table table-striped table-hover mt-4">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Email</th>
-                <th>Nom Complet</th>
-                <th>Rôles</th>
-                <th>Actions</th>
+                <th>{{ 'userindex.email' | trans}}</th>
+                <th>{{ 'userindex.fullname' | trans}}</th>
+                <th>{{ 'userindex.roles' | trans}}</th>
+                <th>{{ 'userindex.actions' | trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-sm btn-warning" title="Modifier les rôles">
-                        <i class="fas fa-user-edit"></i> Modifier
+                        <i class="fas fa-user-edit"></i> {{ 'userindex.edit' | trans}}
                     </a>
                 </td>
             </tr>

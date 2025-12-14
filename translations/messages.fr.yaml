@@ -135,3 +135,32 @@ orderindex:
     price: "Prix"
     status: "Statut"
     actions: "Actions"
+
+userindex:
+    title: "Gestion des Utilisateurs"
+    new: "Nouvel Utilisateur"
+    email: "Email"
+    fullname: "Nom complet"
+    roles: "Rôles"
+    actions: "Actions"
+    edit: "Modifier"
+    nouser: "Aucun utilisateur trouvé."
+
+usercreate:
+    header: "Créer un Utilisateur"
+    title: "Créer un nouvel utilisateur"
+    password: "Communiquez ce mot de passe à l'utilisateur."
+    cancel: "Annuler"
+    create: "Créer le compte"
+
+useredit:
+    header: "Modifier Utilisateur"
+    title: "Modifier l'utilisateur"
+    roles: "Gérer les rôles"
+    note: "Note : Un administrateur a accès à tout le Backoffice."
+    save: "Sauvegarder les modifications"
+    persinfo: "Informations personnelles"
+    firstname: "Prénom :"
+    lastname: "Nom :"
+    email: "Email :"
+    return: "Retour à la liste"
