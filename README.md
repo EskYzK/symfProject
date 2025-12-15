@@ -1,4 +1,4 @@
-Bienvenue sur le projet GameO'Center. Il s'agit d'une application e-commerce complète développée avec Symfony 7.3, permettant la gestion de produits, d'utilisateurs et de commandes.
+Bienvenue sur le projet GameO'Center. Il s'agit d'une application e-commerce de jeux vidéo complète développée avec Symfony 7.3, permettant la gestion de produits, d'utilisateurs et de commandes.
 
 ---------- Description d'installation ----------
 
@@ -8,7 +8,7 @@ Attention : Il vous faut PHP 8.2 pour faire fonctionner ce projet.
 
 -------------- Pré-requis --------------
 
-Voici les commandes à éxecuter pour installer le projet :
+Voici les commandes à exécuter pour installer le projet :
 
 1. Installer les dépendances PHP
 
@@ -31,7 +31,7 @@ php bin/console doctrine:database:create
 # Exécution des migrations (création des tables)
 php bin/console doctrine:migrations:migrate
 
-# Chargement des fausses données (Fixtures)
+# Chargement des données (Fixtures)
 php bin/console doctrine:fixtures:load --no-interaction
 
 4. Lancer le serveur
@@ -43,15 +43,15 @@ http://127.0.0.1:8000
 
 -------------- Application --------------
 
-Une fois sur le site, les deux seules pages accessibles sont : la page d'accueil, ainsi que la page des produits. Pour débloquer l'accès aux autres pages, vous pouvez vous connecter via les identifiants suivants :
+Une fois sur le site, les trois seules pages accessibles sont : la page d'accueil, la page des produits, ainsi que la page de connexion. Pour débloquer l'accès aux autres pages, vous pouvez vous connecter via les identifiants suivants :
 
 # Utilisateur lambda
 
 Email : user1@example.com
 Mot de passe : password
 
-Ces identifiants servent à se connecter sur un compte normal, sans droits particuliers.
-Il existe 5 comptes différents utilisant donc comme emails : user1@example.com, user2@example.com, ..., user5@example.com.
+Ces identifiants servent à se connecter sur un compte lambda, sans droits particuliers.
+Il existe 5 comptes différents utilisant comme emails : user1@example.com, user2@example.com, ..., user5@example.com.
 
 # Utilisateur administrateur
 
