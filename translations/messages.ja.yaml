@@ -205,3 +205,15 @@ profile:
     lastname: "名前"
     email: "電子メール"
     temppwd: "一時パスワード"
+
+creditcard:
+    num: "カード番号"
+    exp: "有効期限 (MM/YY)"
+    cvv: "CVV"
+    add: "銀行カードを追加する"
+    adding: "地図を追加"
+    validating: "検証中です..."
+    mycards: "私の保存したカード"
+    nocard: "カードが保存されていません。"
+    wallet: "私の財布"
+    managing: "カードの管理"

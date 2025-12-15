@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'creditcard.wallet' |trans }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>{{ 'creditcard.managing' |trans }}</h1>
+        {{ component('WalletForm') }}
+    </div>
+{% endblock %}

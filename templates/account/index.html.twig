@@ -22,6 +22,9 @@
             </div>
         </div>
     </div>
+    <div class="account-card mb-5">
+        {{ component('WalletForm') }}
+    </div>
     <div class="account-card">
         <h2>{{ 'account.history'|trans }}</h2>
         {% if orders is empty %}

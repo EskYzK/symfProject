@@ -1,0 +1,47 @@
+<div {{ attributes }}>
+    <h3>{{ 'creditcard.add' |trans }}</h3>
+
+    {{ form_start(form, {
+        attributes: {
+            'data-action': 'live#action',
+            'data-live-action-param': 'save'
+        }
+    }) }}
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form_row(form.number) }}
+            </div>
+            <div class="col-md-3 mb-3">
+                {{ form_row(form.expirationDate) }}
+            </div>
+            <div class="col-md-3 mb-3">
+                {{ form_row(form.cvv) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <span wire:loading.remove>{{ 'creditcard.adding' |trans }}</span>
+            <span wire:loading>{{ 'creditcard.validating' |trans }}</span>
+        </button>
+
+    {{ form_end(form) }}
+
+    <hr class="my-5">
+
+    <h3>{{ 'creditcard.mycards' |trans }}</h3>
+    <div class="row">
+        {% for card in app.user.creditCards %}
+            <div class="col-md-4 mb-3">
+                <div class="card p-3 bg-light border-0 shadow-sm">
+                    <h5>**** **** **** {{ card.number|slice(-4) }}</h5>
+                    <p class="mb-0 text-muted">Exp: {{ card.expirationDate }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <p class="text-muted">{{ 'creditcard.nocard' |trans }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>

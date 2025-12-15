@@ -205,3 +205,15 @@ profile:
     lastname: "Nom"
     email: "Email"
     temppwd: "Mot de passe provisoire"
+
+creditcard:
+    num: "Numéro de carte"
+    exp: "Expiration (MM/YY)"
+    cvv: "CVV"
+    add: "Ajouter une carte bancaire"
+    adding: "Ajouter la carte"
+    validating: "Validation en cours..."
+    mycards: "Mes cartes enregistrées"
+    nocard: "Aucune carte enregistrée."
+    wallet: "Mon Portefeuille"
+    managing: "Gestion de mes cartes"
