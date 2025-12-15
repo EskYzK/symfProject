@@ -45,13 +45,13 @@
                 </td> 
                 <td>
                     <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-warning">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-edit">{{ 'productlist.edit'|trans }}</i>
                     </a>
                     
                     <form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous sûr ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                         <button class="btn btn-sm btn-danger">
-                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-trash">{{ 'productlist.delete'|trans }}</i>
                         </button>
                     </form>
                 </td>
@@ -64,7 +64,6 @@
         </tbody>
     </table>
 
-    {# Affichage de la pagination #}
     <div class="d-flex justify-content-center">
         {{ knp_pagination_render(pagination) }}
     </div>

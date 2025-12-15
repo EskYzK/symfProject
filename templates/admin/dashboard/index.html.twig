@@ -86,7 +86,9 @@
                                 <td>{{ order.createdAt|date('d/m/Y H:i') }}</td>
                                 <td>{{ order.user.email }}</td>
                                 <td>{{ order.total }} €</td>
-                                <td><span class="badge bg-secondary">{{ order.status }}</span></td>
+                                <td><span class="badge {{ status_classes[order.status] ?? 'bg-secondary' }}">
+                                        {{ ('orderstatus.' ~ order.status)|trans }}
+                                    </span></td>
                             </tr>
                         {% else %}
                             <tr><td colspan="5" class="text-center">{{ 'dashboard.noorder'|trans }}</td></tr>

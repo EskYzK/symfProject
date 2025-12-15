@@ -50,13 +50,16 @@
                                 <td><strong>{{ order.reference }}</strong></td>
                                 <td>{{ order.createdAt|date('d/m/Y ' ~ ('account.linkword'|trans) ~ ' H:i') }}</td>
                                 <td>
-                                    {% if order.status == 'en_attente' %}
-                                        <span class="badge bg-secondary">En attente</span>
-                                    {% elseif order.status == 'payee' %}
-                                        <span class="badge bg-success">Payée</span>
-                                    {% else %}
-                                        <span class="badge bg-secondary">{{ order.status }}</span>
-                                    {% endif %}
+                                    {% set status_classes = {
+                                        'Payée': "bg-success",
+                                        'En préparation': "bg-warning",
+                                        'Expédiée': "bg-warning",
+                                        'Livrée': "bg-success",
+                                        'Annulée': "bg-danger",
+                                    } %}
+                                    <span class="badge {{ status_classes[order.status] ?? 'bg-secondary' }}">
+                                        {{ ('orderstatus.' ~ order.status)|trans }}
+                                    </span>
                                 </td>
                                 <td class="text-primary font-weight-bold">{{ order.total }} €</td>
                                 <td>

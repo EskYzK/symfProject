@@ -110,6 +110,8 @@ productlist:
     status: "状態"
     actions: "アクション"
     noproduct: "製品が見つかりませんでした"
+    edit: "変更するには"
+    delete: "消去"
 
 productnew:
     header: "新製品"

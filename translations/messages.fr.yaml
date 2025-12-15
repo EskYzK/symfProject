@@ -110,6 +110,8 @@ productlist:
     status: "Statut"
     actions: "Actions"
     noproduct: "Aucun produit trouvé"
+    edit: "Modifier"
+    delete: "Supprimer"
 
 productnew:
     header: "Nouveau Produit"
