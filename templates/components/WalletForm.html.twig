@@ -2,7 +2,7 @@
     <h3>{{ 'creditcard.add' |trans }}</h3>
 
     {{ form_start(form, {
-        attributes: {
+        attr: {
             'data-action': 'live#action',
             'data-live-action-param': 'save'
         }
@@ -20,9 +20,12 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">
-            <span wire:loading.remove>{{ 'creditcard.adding' |trans }}</span>
-            <span wire:loading>{{ 'creditcard.validating' |trans }}</span>
+        {# CORRECTION : Syntaxe Symfony UX correcte #}
+        <button type="submit" class="btn btn-primary" data-loading="addAttribute(disabled)">
+            <span data-loading="action(save)|hide">{{ 'creditcard.adding' |trans }}</span>
+            <span data-loading="action(save)|show" style="display: none;">
+                <span class="spinner-border spinner-border-sm"></span> {{ 'creditcard.validating' |trans }}
+            </span>
         </button>
 
     {{ form_end(form) }}
@@ -30,18 +33,44 @@
     <hr class="my-5">
 
     <h3>{{ 'creditcard.mycards' |trans }}</h3>
-    <div class="row">
-        {% for card in this.cards %}
-            <div class="col-md-4 mb-3">
-                <div class="card p-3 bg-light border-0 shadow-sm">
-                    <h5>**** **** **** {{ card.number|slice(-4) }}</h5>
-                    <p class="mb-0 text-muted">Exp: {{ card.expirationDate }}</p>
-                </div>
-            </div>
-        {% else %}
-            <div class="col-12">
-                <p class="text-muted">{{ 'creditcard.nocard' |trans }}</p>
-            </div>
-        {% endfor %}
-    </div>
+
+    {% if this.cards|length > 0 %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>{{ 'creditcard.card' |trans }}</th>
+                        <th>{{ 'creditcard.expirate' |trans }}</th>
+                        <th>{{ 'creditcard.actions' |trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for card in this.cards %}
+                        <tr>
+                            <td>
+                                <i class="fas fa-credit-card me-2 text-muted"></i>
+                                **** **** **** <strong>{{ card.number|slice(-4) }}</strong>
+                            </td>
+                            <td>{{ card.expirationDate }}</td>
+                            <td>
+                                <button 
+                                    class="btn btn-sm btn-outline-danger"
+                                    data-action="live#action"
+                                    data-live-action-param="delete"
+                                    data-live-card-param="{{ card.id }}"
+                                    onclick="return confirm('Voulez-vous vraiment supprimer cette carte ?')"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-light text-center border">
+            <p class="text-muted mb-0">{{ 'creditcard.nocard' |trans }}</p>
+        </div>
+    {% endif %}
 </div>

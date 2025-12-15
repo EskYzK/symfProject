@@ -217,3 +217,7 @@ creditcard:
     nocard: "Aucune carte enregistrée."
     wallet: "Mon Portefeuille"
     managing: "Gestion de mes cartes"
+    card: "Carte"
+    expirate: "Expiration"
+    actions: "Actions"
+    supp: "Supprimer"

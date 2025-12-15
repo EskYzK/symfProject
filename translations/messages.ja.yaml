@@ -217,3 +217,7 @@ creditcard:
     nocard: "カードが保存されていません。"
     wallet: "私の財布"
     managing: "カードの管理"
+    card: "地図"
+    expirate: "有効期限"
+    actions: "アクション"
+    supp: "消去"

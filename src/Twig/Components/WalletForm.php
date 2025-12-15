@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
+use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
@@ -55,5 +56,19 @@ class WalletForm extends AbstractController
         $this->addFlash('success', 'Carte ajoutée avec succès !');
         
         $this->resetForm();
+    }
+
+    #[LiveAction]
+    public function delete(CreditCard $card): void
+    {
+        if ($card->getUser() !== $this->getUser()) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $this->entityManager->remove($card);
+        $this->entityManager->flush();
+
+        $this->addFlash('success', 'Carte supprimée avec succès !');
+        
     }
 }
