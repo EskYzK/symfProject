@@ -60,3 +60,8 @@ Mot de passe : admin123
 
 Ces identifiants permettent une connexion sur un compte possédant des droits supérieurs.
 Il peut, par exemple, créer des nouveaux produits, supprimer et ajouter des utilisateurs, etc ...
+
+-------------- Fin --------------
+
+En vous souhaitant de joyeuses fêtes !!
+Courage !
