@@ -1,4 +1,4 @@
-Bienvenue sur le projet SymfProject. Il s'agit d'une application e-commerce complète développée avec Symfony 7.3, permettant la gestion de produits, d'utilisateurs et de commandes.
+Bienvenue sur le projet GameO'Center. Il s'agit d'une application e-commerce complète développée avec Symfony 7.3, permettant la gestion de produits, d'utilisateurs et de commandes.
 
 ---------- Description d'installation ----------
 
