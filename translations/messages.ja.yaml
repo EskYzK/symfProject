@@ -113,7 +113,7 @@ productlist:
 
 productnew:
     header: "新製品"
-    title: "新しい製品を作成する"
+    title: "製品"
     name: "製品名"
     desc: "説明"
     category: "カテゴリ"
@@ -122,6 +122,7 @@ productnew:
     price: "価格"
     return: "戻る"
     save: "保存"
+    details: "詳細"
 
 productedit:
     header: "製品の編集"

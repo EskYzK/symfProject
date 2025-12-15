@@ -299,3 +299,20 @@ a:hover {
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
 }
+
+label, .form-label, .col-form-label {
+    display: block !important;
+    margin-bottom: 0.8rem !important;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+
+.mb-3, .form-group, div > .form-label + .form-control {
+    margin-bottom: 2rem !important;
+}
+
+.invalid-feedback {
+    margin-top: 0.5rem;
+    font-weight: 600;
+}

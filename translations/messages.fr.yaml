@@ -113,7 +113,7 @@ productlist:
 
 productnew:
     header: "Nouveau Produit"
-    title: "Créer un nouveau produit"
+    title: "Produit"
     name: "Nom du produit"
     desc: "Description"
     category: "Catégorie"
@@ -122,6 +122,7 @@ productnew:
     price: "Prix"
     return: "Retour"
     save: "Enregistrer"
+    details: "Détails"
 
 productedit:
     header: "Modifier Produit"
