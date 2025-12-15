@@ -23,13 +23,20 @@ class WalletForm extends AbstractController
     #[LiveProp]
     public ?CreditCard $initialFormData = null;
 
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private CreditCardRepository $creditCardRepository
+    ) {
     }
 
     protected function instantiateForm(): FormInterface
     {
         return $this->createForm(CreditCardType::class, new CreditCard());
+    }
+
+    public function getCards(): array
+    {
+        return $this->creditCardRepository->findBy(['user' => $this->getUser()]);
     }
 
     #[LiveAction]

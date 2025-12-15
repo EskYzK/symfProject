@@ -31,7 +31,7 @@
 
     <h3>{{ 'creditcard.mycards' |trans }}</h3>
     <div class="row">
-        {% for card in app.user.creditCards %}
+        {% for card in this.cards %}
             <div class="col-md-4 mb-3">
                 <div class="card p-3 bg-light border-0 shadow-sm">
                     <h5>**** **** **** {{ card.number|slice(-4) }}</h5>

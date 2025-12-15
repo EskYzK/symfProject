@@ -14,9 +14,14 @@ class CreditCard
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 19)]
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Le numéro de carte est obligatoire')]
-    #[Assert\Luhn(message: 'Numéro de carte invalide')]
+    #[Assert\Regex(pattern: '/^\d+$/', message: 'Le numéro ne doit contenir que des chiffres')]
+    #[Assert\Length(
+        min: 16, 
+        max: 16, 
+        exactMessage: 'Le numéro doit comporter exactement 16 chiffres'
+    )]
     private ?string $number = null;
 
     #[ORM\Column(length: 5)]
@@ -45,7 +50,7 @@ class CreditCard
 
     public function setNumber(string $number): static
     {
-        $this->number = $number;
+        $this->number = str_replace(' ', '', $number);
 
         return $this;
     }
