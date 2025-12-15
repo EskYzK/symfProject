@@ -135,6 +135,7 @@ a:hover {
     background-color: var(--white);
     border-bottom: 1px solid var(--border-color);
     padding: 1.25rem;
+    color:black;
 }
 
 /* --- Formulaires (Edit, Login, etc) --- */
