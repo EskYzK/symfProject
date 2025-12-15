@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Entity\Image;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductController extends AbstractController
 {
     #[Route('/', name: 'admin_product_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(ProductRepository $productRepository, PaginatorInterface $paginator, Request $request,CategoryRepository $categoryRepository): Response
     {
         $pagination = $paginator->paginate(
             $productRepository->createQueryBuilder('p'),
@@ -32,6 +33,7 @@ class ProductController extends AbstractController
 
         return $this->render('admin/product/index.html.twig', [
             'pagination' => $pagination,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

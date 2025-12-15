@@ -232,3 +232,8 @@ category:
     sports: "Sports"
     aventure: "Aventure"
     stratégie: "Stratégie"
+    title: "Statistiques par catégorie"
+    subt1: "Catégorie"
+    subt2: "Nombre de produits"
+    nocateg: "Aucune catégorie trouvée."
+
