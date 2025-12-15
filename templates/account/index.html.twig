@@ -8,10 +8,7 @@
     <div class="account-card mb-5">
         <h2>{{ 'account.information'|trans }}</h2>
         <div class="row">
-            <div class="col-md-2 text-center mb-3">
-                <img src="https://ui-avatars.com/api/?name={{ app.user.firstname }}+{{ app.user.lastname }}&background=0056b3&color=fff&size=128" class="rounded-circle" alt="Avatar">
-            </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <p><strong>{{ 'account.firstname'|trans }}</strong> {{ app.user.firstname }}</p>
                 <p><strong>{{ 'account.lastname'|trans }}</strong> {{ app.user.lastname }}</p>
                 <p><strong>{{ 'account.email'|trans }}</strong> {{ app.user.email }}</p>
@@ -19,6 +16,9 @@
                     <a href="{{ path('app_account_edit') }}" class="btn edit">{{ 'account.edit'|trans }}</a>
                     <a href="{{ path('app_logout') }}" class="btn logout">{{ 'account.delete'|trans }}</a>
                 </div>
+            </div>
+            <div class="col-md-2 text-center mb-3">
+                <img src="https://ui-avatars.com/api/?name={{ app.user.firstname }}+{{ app.user.lastname }}&background=0056b3&color=fff&size=128" class="rounded-circle" alt="Avatar">
             </div>
         </div>
     </div>
