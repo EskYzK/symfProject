@@ -59,16 +59,22 @@ class WalletForm extends AbstractController
     }
 
     #[LiveAction]
-    public function delete(CreditCard $card): void
+    public function delete(#[LiveArg] int $card): void
     {
-        if ($card->getUser() !== $this->getUser()) {
+        $cardToDelete = $this->creditCardRepository->find($card);
+
+        if (!$cardToDelete) {
+            $this->addFlash('error', 'Carte non trouvée.');
+            return;
+        }
+        
+        if ($cardToDelete->getUser() !== $this->getUser()) {
             throw $this->createAccessDeniedException();
         }
 
-        $this->entityManager->remove($card);
+        $this->entityManager->remove($cardToDelete);
         $this->entityManager->flush();
 
         $this->addFlash('success', 'Carte supprimée avec succès !');
-        
     }
 }
