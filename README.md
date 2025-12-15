@@ -61,6 +61,13 @@ Mot de passe : admin123
 Ces identifiants permettent une connexion sur un compte possédant des droits supérieurs.
 Il peut, par exemple, créer des nouveaux produits, supprimer et ajouter des utilisateurs, etc ...
 
+-------------- Problèmes d'installation et de clonage --------------
+
+Dans le cas d'une erreur lors du clonage du projet, par rapport aux images, n'hésitez pas à télécharger directement le fichier d'images sur le repo.
+Il se trouve à l'arborescence suivante :
+
+"public/images/products/"
+
 -------------- Fin --------------
 
 En vous souhaitant de joyeuses fêtes !!
