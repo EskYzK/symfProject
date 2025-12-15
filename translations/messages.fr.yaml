@@ -223,3 +223,12 @@ creditcard:
     expirate: "Expiration"
     actions: "Actions"
     supp: "Supprimer"
+
+category:
+    action: "Action"
+    rpg: "RPG"
+    mmo: "MMO"
+    gacha: "Gacha"
+    sports: "Sports"
+    aventure: "Aventure"
+    stratégie: "Stratégie"

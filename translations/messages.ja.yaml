@@ -223,3 +223,12 @@ creditcard:
     expirate: "有効期限"
     actions: "アクション"
     supp: "消去"
+
+category:
+    action: "アクション"
+    rpg: "RPG"
+    mmo: "MMO"
+    gacha: "ガチャ"
+    sports: "スポーツ"
+    aventure: "アドベンチャー"
+    stratégie: "戦略"
