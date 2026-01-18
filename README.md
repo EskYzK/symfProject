@@ -1,8 +1,10 @@
-Bienvenue sur le projet GameO'Center. Il s'agit d'une application e-commerce de jeux vidéo complète développée avec Symfony 7.3, permettant la gestion de produits, d'utilisateurs et de commandes.
+Bienvenue sur le projet Backoffice. Il s'agit d'une application web complète développée avec Symfony 7 et Tailwind CSS, permettant la gestion administrative de produits, d'utilisateurs et de clients.
+
+Ce projet met l'accent sur une architecture propre, une interface utilisateur soignée et des fonctionnalités avancées.
 
 ---------- Description d'installation ----------
 
-# Symfony 7.3 Boilerplate 
+# Symfony 7.4 Boilerplate 
 
 Attention : Il vous faut PHP 8.2 pour faire fonctionner ce projet.
 
@@ -43,32 +45,84 @@ http://127.0.0.1:8000
 
 -------------- Application --------------
 
-Une fois sur le site, les trois seules pages accessibles sont : la page d'accueil, la page des produits, ainsi que la page de connexion. Pour débloquer l'accès aux autres pages, vous pouvez vous connecter via les identifiants suivants :
+Une fois sur le site, les trois seules pages accessibles sont : la page d'accueil, la page de connexion, ainsi que la page des produits. Pour débloquer l'accès aux autres pages, vous pouvez vous connecter via les identifiants suivants :
 
 # Utilisateur lambda
 
-Email : user1@example.com
+Email : user@test.com
 Mot de passe : password
 
 Ces identifiants servent à se connecter sur un compte lambda, sans droits particuliers.
-Il existe 5 comptes différents utilisant comme emails : user1@example.com, user2@example.com, ..., user5@example.com.
 
 # Utilisateur administrateur
 
-Email : admin@example.com
-Mot de passe : admin123
+Email : admin@test.com
+Mot de passe : password
 
 Ces identifiants permettent une connexion sur un compte possédant des droits supérieurs.
-Il peut, par exemple, créer des nouveaux produits, supprimer et ajouter des utilisateurs, etc ...
+Il a accès à tout : Gestion des utilisateurs, produits, clients, import/export.
 
--------------- Problèmes d'installation et de clonage --------------
+# Utilisateur manager
 
-Dans le cas d'une erreur lors du clonage du projet, par rapport aux images, n'hésitez pas à télécharger directement le fichier d'images sur le repo.
-Il se trouve à l'arborescence suivante :
+Email : manager@test.com
+Mot de passe : password
 
-"public/images/products/"
+Ces identifiants permettent également une connexion sur un compte possédant des droits supérieurs.
+Il peut gérer les clients et les produits, mais pas les utilisateurs.
+
+# ✨ Fonctionnalités Implémentées
+Le projet respecte une architecture MVC stricte et inclut les fonctionnalités suivantes :
+
+📊 Tableau de Bord (Dashboard)
+Visualisation des statistiques clés (KPI) : Nombre d'utilisateurs, produits, clients.
+
+Tableaux récapitulatifs des derniers ajouts.
+
+Design responsive et épuré avec cartes statistiques.
+
+📦 Gestion des Produits
+
+Formulaire Multi-étapes : Création et édition de produits via un parcours dynamique (Type -> Détails -> Spécifique).
+Logique conditionnelle : Gestion différenciée entre produits "Physiques" (Stock) et "Numériques" (Licence).
+Tri et Filtres : Possibilité de trier par prix ou par nom via l'interface.
+
+Import / Export :
+Export CSV via un service dédié.
+Import massif via une commande (app:import-products).
+
+👥 Gestion des Clients
+
+CRUD complet.
+Validation stricte : Regex pour les noms/prénoms (lettres, tirets, espaces uniquement) et unicité de l'email.
+
+Intégration d'avatars générés via les initiales.
+
+🛠️ Gestion des Utilisateurs
+
+Réservé aux administrateurs.
+Gestion des rôles (Admin, Manager, User) et des accès via des Voters de sécurité.
+
+💻 Commandes Personnalisées (CLI)
+
+Des commandes Symfony ont été créées pour automatiser certaines tâches :
+
+php bin/console app:import-products : Importe des produits depuis un CSV.
+php bin/console app:create-client : Création interactive d'un client en ligne de commande.
+
+# 🧪 Exécution des Tests
+
+Le projet dispose de tests unitaires (PHPUnit) pour garantir la fiabilité des services et des entités.
+Pour lancer la suite de tests :
+
+php bin/phpunit
+
+Cela vérifiera notamment :
+
+Le bon fonctionnement du service d'export CSV.
+La cohérence de l'entité Product.
+
+# 🎥 Démonstration
 
 -------------- Fin --------------
 
-En vous souhaitant de joyeuses fêtes !!
-Courage !
+Courage pour les corrections
