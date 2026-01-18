@@ -109,6 +109,18 @@ Des commandes Symfony ont été créées pour automatiser certaines tâches :
 php bin/console app:import-products : Importe des produits depuis un CSV.
 php bin/console app:create-client : Création interactive d'un client en ligne de commande.
 
+# php bin/console app:import-products
+
+Pour que cette commande s'exécute correctement et que des produits soient importés, il faut que le fichier d'import se trouve dans le dossier suivant : 
+
+public/import.csv
+
+Il doit porter ce nom pour pouvoir être détecter.
+
+# php bin/console app:create-client
+
+Cette commande lancera directement dans le terminal un mini formulaire de terminal permettant la création complete d'un client
+
 # 🧪 Exécution des Tests
 
 Le projet dispose de tests unitaires (PHPUnit) pour garantir la fiabilité des services et des entités.
